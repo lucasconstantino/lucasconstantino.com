@@ -1,0 +1,21 @@
+{
+  "name": "lucasconstantino.com-theme",
+  "version": "0.0.0",
+  "homepage": "https://github.com/lucasconstantino/lucasconstantino.com",
+  "authors": [
+    "Lucas Constantino <lucas@taller.net.br>"
+  ],
+  "description": "Lucas Constantino's website Ghost theme.",
+  "keywords": [
+    "Ghost",
+    "AngularJS"
+  ],
+  "license": "GPLv2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
