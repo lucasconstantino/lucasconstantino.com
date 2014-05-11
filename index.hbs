@@ -1,68 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>{{meta_title}}</title>
+<head>
+  <meta charset="utf-8">
+  <title>{{meta_title}}</title>
 
-    <meta name="description" content="{{meta_description}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{meta_description}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="{{asset "css/main.css"}}">
+  <link rel="stylesheet" href="{{asset "css/main.css"}}">
 
-    <script>var config = {{config}};</script>
+  <script>var config = {{config}};</script>
 
-    {{ghost_head}}
-  </head>
-  <body class="{{body_class}}">
+  {{ghost_head}}
+</head>
+<body class="{{body_class}}">
 
-    <header class="site-head">
-      {{#if @blog.logo}}
-        <a class="blog-logo" href="{{@blog.url}}">
-          <img src="{{@blog.logo}}" alt="Blog Logo">
-        </a>
-      {{/if}}
-      
-      <h1 class="blog-title">{{@blog.title}}</h1>
-      <h2 class="blog-description">{{@blog.description}}</h2>
-      
-      {{! The next line is an example of how to output the cover image that can be set in the Ghost admin area. Uncomment the line if you wish to use it. }}
-      {{!-- {{#if @blog.cover}}<img src="{{@blog.cover}}" alt="Blog Cover" />{{/if}} --}}
-    </header>
+  <!-- Main App view -->
+  <div ui-view></div>
 
-    {{! The main content area on the homepage }}
-    <main role="main">
+  <header class="site-head">
+    {{#if @blog.logo}}
+      <a class="blog-logo" href="{{@blog.url}}">
+        <img src="{{@blog.logo}}" alt="Blog Logo">
+      </a>
+    {{/if}}
+    
+    <h1 class="blog-title">{{@blog.title}}</h1>
+    <h2 class="blog-description">{{@blog.description}}</h2>
+    
+    {{! The next line is an example of how to output the cover image that can be set in the Ghost admin area. Uncomment the line if you wish to use it. }}
+    {{!-- {{#if @blog.cover}}<img src="{{@blog.cover}}" alt="Blog Cover" />{{/if}} --}}
+  </header>
 
-      {{! Each post will be output using this markup }}
-      {{#foreach posts}}
+  <footer>
+    <a href="{{@blog.url}}/rss/">Subscribe!</a>
+    <section>All content copyright <a href="/">{{@blog.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
+    <section>Proudly published with <a href="http://ghost.org">Ghost</a></section>
+  </footer>
 
-      <article class="{{post_class}}">
-        <header>
-          <span class="post-meta"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time> {{tags prefix="on "}}</span>
-          <h2><a href="{{url}}">{{{title}}}</a></h2>
-        </header>
-        <section>
-          <p>{{excerpt}}&hellip;</p>
-        </section>
-      </article>
+  {{ghost_foot}}
 
-      {{/foreach}}
+  <script src="{{asset "js/plugins.js"}}"></script>
+  <script src="{{asset "js/main.js"}}"></script>
 
-      {{!! After all the posts, we have the previous/next pagination links }}
-      {{pagination}}
-
-    </main>
-
-    <footer>
-      <a href="{{@blog.url}}/rss/">Subscribe!</a>
-      <section>All content copyright <a href="/">{{@blog.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
-      <section>Proudly published with <a href="http://ghost.org">Ghost</a></section>
-    </footer>
-
-    {{ghost_foot}}
-
-    <script src="{{asset "js/plugins.js"}}"></script>
-    <script src="{{asset "js/main.js"}}"></script>
-  </body>
+  {{component "angular.js"}}
+</body>
 </html>
-
-
