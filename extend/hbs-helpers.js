@@ -57,7 +57,7 @@ hbs.registerHelper('config', function (context) {
 
 
 // --------------------------
-// Asset helpers.
+// Include helpers.
 // --------------------------
 
 /**
@@ -71,9 +71,9 @@ function renderTag(options) {
 }
 
 /**
- * Handles the printing of JavaScript and Stylesheet assets.
+ * Handles the inclusion of JavaScript and Stylesheet assets.
  */
-function requireAsset(type, context, options) {
+function include(type, context, options) {
   var output    = ''
     , basePath  = config().paths.subdir
     , assetPath = basePath + '/' + (type ? type + '/' : '')
@@ -81,15 +81,20 @@ function requireAsset(type, context, options) {
       '.js': function (filepath, attributes) {
         return safeString(renderTag({
           tag: 'script'
-        , attr: _.assign({ src: filepath }, attributes)
+        , attr: _.assign({
+                  src: filepath
+                }, attributes)
         }));
       }
     , '.css': function (filepath, attributes) {
-        return safeString(hbsScript(_.assign({
-          href: filepath
-        }, attributes, {
-          rel: 'stylesheet'
-        })));
+        return safeString(renderTag({
+          tag: 'link'
+        , closure: false
+        , attr: _.assign({
+                  href: filepath
+                , rel: 'stylesheet'
+                }, attributes)
+        }));
       }
     };
 
@@ -100,12 +105,26 @@ function requireAsset(type, context, options) {
   // Return basic path if data isn't as expected.
   if (typeof context != 'string' || typeof options != 'object') return assetPath;
 
-  return renderer[path.extname(context)] && renderer[path.extname(context)](assetPath + context, options) || '';
+  if (renderer[path.extname(context)]) {
+    return renderer[path.extname(context)](assetPath + context, options);
+  } else {
+    var log = 'Could not include "' + context + '": the extension is absent or is not supported.';
+    console.log(log);
+    return safeString('<!-- ' + log + ' -->');
+  }
 }
 
-// Register asset types
-['components', 'app', 'assets'].forEach(function (type) {
-  hbs.registerHelper(type.replace(/s+$/, ""), function (context, options) {
-    return requireAsset(type, context, options);
+// Map include types.
+var map = {
+      'component' : 'components'
+    , 'app'       : 'app'
+    , 'include'   : ''
+    }
+  , m;
+
+// Register each type and path.
+for (m in map) {
+  hbs.registerHelper(m, function (context, options) {
+    return include(map[m], context, options);
   });
-});
+}
