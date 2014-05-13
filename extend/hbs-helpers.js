@@ -8,7 +8,8 @@ var rootPath  = '../../../../'
   , hbs       = require('express-hbs')
   , path      = require('path')
   , fs        = require('fs')
-  , _         = require('lodash');
+  , _         = require('lodash')
+  , project   = require('../package.json');
 
 // Templates.
 var hbsTag = hbs.compile(fs.readFileSync(__dirname + '/templates/tag.hbs', 'utf8'));
@@ -43,14 +44,17 @@ hbs.registerHelper('json', function (context) {
 hbs.registerHelper('config', function (context) {
 
   // Safely parse context.
-  var config = typeof this == 'object' ? this : {
-    data: context
-  };
+  var config = this;
 
   // Guard blog settings, if available.
   if (context && context.data && context.data.blog) {
     config.blog = context.data.blog;
   }
+
+  // Join project information.
+  _.assign(config, {
+    project: project
+  });
 
   return safeString(JSON.stringify(config));
 });
@@ -124,7 +128,9 @@ var map = {
 
 // Register each type and path.
 for (m in map) {
-  hbs.registerHelper(m, function (context, options) {
-    return include(map[m], context, options);
-  });
+  (function (key) {
+    hbs.registerHelper(key, function (context, options) {
+      return include(map[key], context, options);
+    });
+  })(m);
 }

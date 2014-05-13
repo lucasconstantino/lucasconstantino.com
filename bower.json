@@ -1,6 +1,6 @@
 {
-  "name": "lucasconstantino.com-theme",
-  "version": "0.0.0",
+  "name": "lucasconstantino.com",
+  "version": "0.1.0",
   "homepage": "https://github.com/lucasconstantino/lucasconstantino.com",
   "authors": [
     "Lucas Constantino <lucas@taller.net.br>"
@@ -23,6 +23,8 @@
     "jquery": "~2.1.1",
     "angular-route": "~1.2.16",
     "angular-animate": "~1.2.16",
-    "angular-ui-router": "~0.2.10"
+    "angular-ui-router": "~0.2.10",
+    "lodash": "~2.4.1",
+    "angular-sanitize": "~1.2.16"
   }
 }
