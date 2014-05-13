@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <head>
   <meta charset="utf-8">
   <title>{{meta_title}}</title>
@@ -7,43 +7,71 @@
   <meta name="description" content="{{meta_description}}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="{{asset "css/main.css"}}">
-
-  <script>var config = {{config}};</script>
+  {{include "css/main.css"}}
 
   {{ghost_head}}
 </head>
 <body class="{{body_class}}">
 
-  <!-- Main App view -->
-  <div ui-view></div>
-
-  <header class="site-head">
+  <header id="site-head">
     {{#if @blog.logo}}
-      <a class="blog-logo" href="{{@blog.url}}">
+      <a class="blog-logo" href="{{@blog.url}}" style="background: url('{{@blog.logo}}') no-repeat cover">
         <img src="{{@blog.logo}}" alt="Blog Logo">
       </a>
     {{/if}}
-    
-    <h1 class="blog-title">{{@blog.title}}</h1>
-    <h2 class="blog-description">{{@blog.description}}</h2>
+
+    <h1 id="blog-title">
+      <span class="first-name">Lucas</span>
+      <span class="second-name">Constantino</span>
+    </h1>
+    <h2 id="blog-description">{{@blog.description}}</h2>
     
     {{! The next line is an example of how to output the cover image that can be set in the Ghost admin area. Uncomment the line if you wish to use it. }}
     {{!-- {{#if @blog.cover}}<img src="{{@blog.cover}}" alt="Blog Cover" />{{/if}} --}}
   </header>
 
-  <footer>
+  <!-- Main App view -->
+  <main id="site-content"
+    ui-view></main>
+
+  <footer id="site-footer">
     <a href="{{@blog.url}}/rss/">Subscribe!</a>
     <section>All content copyright <a href="/">{{@blog.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
     <section>Proudly published with <a href="http://ghost.org">Ghost</a></section>
   </footer>
 
+
+  {{! Ghost scripts }}
   {{ghost_foot}}
 
-  {{include "js/plugins.js"}}
-  {{include "js/main.js"}}
 
-  {{component "angular.js"}}
-  {{component "angular"}}
+  {{! Applicationg configuration }}
+  <script>var config = {{config}};</script>
+  {{app "config.js"}}
+
+
+  {{! Vendor components }}
+  {{component "jquery/dist/jquery.js"}}
+  {{component "angular/angular.js"}}
+  {{component "angular-route/angular-route.js"}}
+  {{component "angular-animate/angular-animate.js"}}
+  {{component "angular-sanitize/angular-sanitize.js"}}
+  {{component "angular-ui-router/release/angular-ui-router.js"}}
+  {{component "lodash/dist/lodash.js"}}
+
+  
+  {{! Application modules }}
+  {{app "blog/module.js"}}
+  {{app "blog/router.js"}}
+  {{app "blog/services.js"}}
+  {{app "blog/filters.js"}}
+  {{app "blog/controllers.js"}}
+
+
+  {{! Application }}
+  {{app "app.js"}}
+  {{app "router.js"}}
+  {{app "init.js"}}
+
 </body>
 </html>
