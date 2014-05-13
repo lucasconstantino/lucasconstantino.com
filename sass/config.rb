@@ -62,6 +62,7 @@ add_import_path "partials"
 require 'sass-globbing'
 require 'susy'
 require 'breakpoint'
+require 'animation'
 
 
 

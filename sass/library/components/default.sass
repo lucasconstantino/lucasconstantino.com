@@ -1,0 +1,53 @@
+/*
+ *------------------------------------------------------------------------------
+ * Default
+ *------------------------------------------------------------------------------
+ * Use this file to define default element/tag styles.
+ */
+
+
+
+html
+  font-size: 10px
+
+body
+  font-size: 16px
+
+
+// -----------------------------
+// Anchors.
+// -----------------------------
+
+%a, %a:visited
+  color: $color-link
+  text-decoration: none
+  &:hover, &:focus
+    text-decoration: underline
+
+
+// -----------------------------
+// Headings.
+// -----------------------------
+
+%hn
+  margin-top: 0
+  line-height: 1em
+  // font-family: $claro-font-medium
+  font-weight: bold
+  color: $color-heading
+
+
+// -----------------------------
+// Lists.
+// -----------------------------
+
+%ul
+  > %li
+
+
+// -----------------------------
+// Images.
+// -----------------------------
+
+%img
+  max-width: 100%
