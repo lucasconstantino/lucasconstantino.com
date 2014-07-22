@@ -15,8 +15,9 @@
 // Font attributes.
 // ------------------------------------
 
-$font-size: 14px
-$font-line: 1.5em
+$font-size-root: 14px
+$font-size-text: 16px
+$font-line: 1.618em
 $font-indent: 2em
 
 
@@ -24,12 +25,12 @@ $font-indent: 2em
 // Heading attributes.
 // ------------------------------------
 
-$font-size-h1: $font-size * 3.5
-$font-size-h2: $font-size * 3.0
-$font-size-h3: $font-size * 2.5
-$font-size-h4: $font-size * 2.0
-$font-size-h5: $font-size * 1.5
-$font-size-h6: $font-size * 1.0
+$font-size-h1: 4.0rem
+$font-size-h2: 3.0rem
+$font-size-h3: 2.5rem
+$font-size-h4: 2.0rem
+$font-size-h5: 1.5rem
+$font-size-h6: 1.0rem
 
 
 // ------------------------------------
@@ -49,11 +50,21 @@ $font-courier: "Courier New", "DejaVu Sans Mono", monospace, sans-serif
 // Custom font families.
 // ------------------------------------
 
-// $font-[NAME]: [DEFINITION]
+$font-open-sans: "Open Sans", $font-arial
+$font-bree-serif: "Bree Serif", $font-georgia
 
 
 // ------------------------------------
-// Default font families.
+// Descriptive variables.
 // ------------------------------------
 
-$font-base: $font-arial
+$font-sans: $font-open-sans
+$font-serif: $font-bree-serif
+
+
+// ------------------------------------
+// Functional variables.
+// ------------------------------------
+
+$font-text: $font-sans
+$font-heading: $font-serif
