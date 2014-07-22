@@ -13,6 +13,7 @@ angular.module(config.project.name,
   [ 'ngRoute'
   , 'ngAnimate'
   , 'ui.router'
+  , 'duScroll'
 
   // Sub-modules
   , 'blog'
