@@ -14,18 +14,19 @@
 <body class="{{body_class}}">
 
   <header id="site-head">
-    {{#if @blog.logo}}
-      <a class="blog-logo" href="{{@blog.url}}" style="background: url('{{@blog.logo}}') no-repeat cover">
-        <img src="{{@blog.logo}}" alt="Blog Logo">
-      </a>
-    {{/if}}
-
     <h1 id="blog-title">
-      <span class="first-name">Lucas</span>
-      <span class="second-name">Constantino</span>
+      <a sref="blog">
+        <img src="http://www.gravatar.com/avatar/1cda89f1fbe853160953a0bb5aabe5f5?s=168" alt="Lucas">
+      </a>
     </h1>
-    <h2 id="blog-description">{{@blog.description}}</h2>
-    
+
+    <ul id="site-navigation">
+      <li><a ui-sref="blog" class="active">Blog</a></li>
+      <li><a sref="projects">Projects</a></li>
+      <li><a sref="ask">Ask a Question</a></li>
+      <li><a sref="about">About</a></li>
+    </ul>
+
     {{! The next line is an example of how to output the cover image that can be set in the Ghost admin area. Uncomment the line if you wish to use it. }}
     {{!-- {{#if @blog.cover}}<img src="{{@blog.cover}}" alt="Blog Cover" />{{/if}} --}}
   </header>
@@ -35,14 +36,19 @@
     ui-view></main>
 
   <footer id="site-footer">
-    <a href="{{@blog.url}}/rss/">Subscribe!</a>
-    <section>All content copyright <a href="/">{{@blog.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
-    <section>Proudly published with <a href="http://ghost.org">Ghost</a></section>
+    <div class="inner">
+      <a href="{{@blog.url}}/rss/">Subscribe!</a>
+      <section>All content copyright <a href="/">{{@blog.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
+      <section>Proudly published with <a href="http://ghost.org">Ghost</a></section>
+    </div>
   </footer>
 
 
   {{! Ghost scripts }}
   {{ghost_foot}}
+
+
+  {{! Asset scripts }}
 
 
   {{! Applicationg configuration }}
@@ -56,8 +62,10 @@
   {{component "angular-route/angular-route.js"}}
   {{component "angular-animate/angular-animate.js"}}
   {{component "angular-sanitize/angular-sanitize.js"}}
+  {{component "angular-scroll/angular-scroll.js"}}
   {{component "angular-ui-router/release/angular-ui-router.js"}}
   {{component "lodash/dist/lodash.js"}}
+  {{component "prism/prism.js"}}
 
   
   {{! Application modules }}
