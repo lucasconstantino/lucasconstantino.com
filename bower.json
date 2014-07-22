@@ -26,6 +26,7 @@
     "angular-ui-router": "~0.2.10",
     "lodash": "~2.4.1",
     "angular-sanitize": "~1.2.16",
-    "prism": "https://github.com/LeaVerou/prism/archive/gh-pages.zip"
+    "prism": "https://github.com/LeaVerou/prism/archive/gh-pages.zip",
+    "angular-scroll": "~0.6.1"
   }
 }
