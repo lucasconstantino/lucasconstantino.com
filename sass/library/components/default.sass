@@ -7,11 +7,17 @@
 
 
 
-html
-  font-size: 10px
+%html
+  font-size: $font-size-root
 
-body
-  font-size: 16px
+%body
+  font-family: $font-text
+  font-size: $font-size-text
+  line-height: $font-line
+  color: $color-grey-dark
+  background-color: $color-background
+  background-repeat: repeat
+  background-image: image-url("noise-lines.png")
 
 
 // -----------------------------
@@ -19,10 +25,17 @@ body
 // -----------------------------
 
 %a, %a:visited
+  @extend %transition-navigation
   color: $color-link
   text-decoration: none
   &:hover, &:focus
+    color: inherit
     text-decoration: underline
+  &[sref]
+    cursor: pointer
+  @for $h from 1 through 6
+    h#{$h} &:hover, h#{$h} &:focus
+      text-decoration: none
 
 
 // -----------------------------
@@ -30,12 +43,66 @@ body
 // -----------------------------
 
 %hn
-  margin-top: 0
+  margin: 0.625em 0 0.2em
   line-height: 1em
-  // font-family: $claro-font-medium
-  font-weight: bold
+  font-family: $font-heading
+  font-weight: 300
   color: $color-heading
 
+%h1
+  @extend %hn
+  font-size: $font-size-h1
+%h2
+  @extend %hn
+  font-size: $font-size-h2
+%h3
+  @extend %hn
+  font-size: $font-size-h3
+%h4
+  @extend %hn
+  font-size: $font-size-h4
+%h5
+  @extend %hn
+  font-size: $font-size-h5
+%h6
+  @extend %hn
+  font-size: $font-size-h6
+
+
+// -----------------------------
+// Line breaks.
+// -----------------------------
+
+%hr
+  height: 0
+  margin: 2em 5%
+  border: 2px dashed $color-grey-lighter
+  border-width: 0 0 2px 0
+  background-color: transparent
+
+
+// -----------------------------
+// Text elements.
+// -----------------------------
+
+%p
+  margin: 0 0 0.6em
+
+
+// -----------------------------
+// Block elements.
+// -----------------------------
+
+%blockquote
+  border-left: 4px solid $color-primary
+  margin: 1em -9.5% 1em 0
+  padding: 0.6em 1em
+  background-color: rgba(black, 0.02)
+  p
+    font-style: italic
+    color: $color-grey-darkish
+    &:last-child
+      margin-bottom: 0
 
 // -----------------------------
 // Lists.
