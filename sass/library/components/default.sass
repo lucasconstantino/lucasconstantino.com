@@ -84,6 +84,25 @@
 %p
   margin: 0 0 0.6em
 
+%s
+  position: relative
+  text-decoration: none
+  margin-left: 0.2em
+  &:before, &:after
+    content: ""
+    position: absolute
+    width: 110%
+    height: 2px
+    background-color: rgba(0, 0, 0, 0.6)
+    left: -5%
+    top: 55%
+    z-index: -1
+    transform: rotate(-8deg)
+  &:before
+    transform: rotate(-8deg)
+  &:after
+    transform: rotate(8deg)
+
 
 // -----------------------------
 // Block elements.
