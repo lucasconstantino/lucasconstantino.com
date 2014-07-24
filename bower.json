@@ -27,6 +27,7 @@
     "lodash": "~2.4.1",
     "angular-sanitize": "~1.2.16",
     "prism": "https://github.com/LeaVerou/prism/archive/gh-pages.zip",
-    "angular-scroll": "~0.6.1"
+    "angular-scroll": "~0.6.1",
+    "font-awesome": "~4.1.0"
   }
 }
