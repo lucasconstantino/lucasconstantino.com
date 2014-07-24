@@ -1,0 +1,26 @@
+
+<div ng-controller="BlogPostController">
+  <header class="header-section">
+    <div class="section-inner">
+      <h1 class="page-title">{{post.title}}</h1>
+    </div>
+  </header>
+
+  <section class="content-section">
+    <div class="section-inner">
+      <article class="post">
+        <div class="post-body"
+          ng-bind-html="post.html | html"></div>
+
+        <footer>
+          <span class="post-meta">
+            <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
+              <span class="date-day">{{post.date | date:"d"}}</span>
+              <span class="date-month">{{post.date | date:"MMM"}}</span>
+            </time>
+          </span>
+        </footer>
+      </article>
+    </div>
+  </section>
+</div>
