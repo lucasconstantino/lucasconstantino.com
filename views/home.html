@@ -1,5 +1,43 @@
 
-<section>
-  <h1>Home</h1>
+<div id="home">
+  <header id="intro" class="header-section">
+    <div class="section-inner">
+      <p>Lucas Constantino Silva is a developer and kind of a web designer. He has knowledge on all major languages of the web, such as HTML, CSS (with a drop of Sass), PHP and lovely JavaScript. He works at <a href="https://taller.net.br/">Taller</a>, a great company with amazing <s>people</s> friends.</p>
+      <p>He definitely <i class="fa fa-heart love"></i> his girlfriend.</p>
+    </div>
+  </header>
 
-</section>
+  <div ng-controller="BlogListController">
+    <header class="header-section">
+      <div class="section-inner">
+        <h2 class="page-title"><i class="fa fa-rss"></i> Latest Posts</h2>
+
+        <div class="article-list post-list">
+          <article class="post"
+            ng-repeat="post in posts">
+            <a ui-sref="blog.post({slug: '{{post.slug}}'})">
+              <header>
+                <h3>{{post.title}}</h3>
+                <div class="post-meta-date">
+                  <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
+                    <span class="date-day">{{post.date | date:"d"}}</span>
+                    <span class="date-month">{{post.date | date:"MMM"}}</span>
+                  </time>
+                </div>
+              </header>
+
+              <div class="post-excerpt"
+                ng-bind-html="post.html | excerpt | html"></div>
+
+              <footer>
+                <span class="post-meta">
+                </span>
+              </footer>
+            </a>
+          </article>
+        </div>
+      </div>
+    </header>
+  </div>
+
+</div>

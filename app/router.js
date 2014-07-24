@@ -11,6 +11,9 @@ angular.module(config.project.name)
   // Routing Configuration
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     
+    // Make Blog the default route.
+    $urlRouterProvider.otherwise('/');
+
     // Configure states.
     $stateProvider
 
