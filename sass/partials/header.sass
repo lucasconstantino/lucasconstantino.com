@@ -1,0 +1,144 @@
+/*------------------------------------------------------------------------------
+ * Header
+ *------------------------------------------------------------------------------
+ */
+
+body
+  padding-top: 82px
+
+#site-head
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  width: 100%
+  padding: 10px 0
+  background-color: white
+  text-align: center
+  z-index: 100
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.08)
+
+#site-head-inner
+  @extend %container
+
+#site-navigation
+  text-transform: uppercase
+  float: right
+  li
+    display: block
+    float: left
+    margin: 28px 10px 10px
+    line-height: 24px
+  a
+    position: relative
+    display: inline-block
+    color: $color-asbestos
+    text-decoration: none
+    overflow: hidden
+    height: 1em
+    line-height: 1em
+    padding: 0 0.15em
+    font-weight: 300
+    span
+      @extend %transition-navigation
+      position: relative
+      top: 0
+      display: inline-block
+      vertical-align: middle
+      &:before
+        content: attr(data-hover)
+        position: absolute
+        top: 1em
+        font-weight: 700
+        white-space: nowrap
+    &:hover, &:focus
+      span
+        top: -1em
+
+#blog-profile
+  position: absolute
+  top: 10px
+  margin: 0
+  line-height: 0
+
+  span
+    display: none
+
+// @-webkit-keyframes blog-title
+//   0%
+//     +filter(#{"sepia(1) brightness(1.1) hue-rotate(190deg)"})
+//   50%
+//     +filter(#{"sepia(1) brightness(1.1) hue-rotate(370deg)"})
+//   100%
+//     +filter(#{"sepia(1) brightness(1.1) hue-rotate(550deg)"})
+
+#blog-title
+  +transition(none)
+  position: relative
+  display: inline-block
+  width: 80px
+  vertical-align: middle
+  border-radius: 50%
+  border: 6px solid white
+  box-sizing: content-box
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.08)
+
+  img
+    +filter(sepia(0.5))
+    @extend %transition-navigation
+    vertical-align: middle
+    width: 100%
+    border-radius: 50%
+
+  &:hover, &:active
+    img
+      +filter(sepia(0))
+
+#social-links
+  display: inline-block
+  vertical-align: middle
+  margin-top: -4px
+  li
+    float: left
+  a
+    display: block
+    width: 36px
+    height: 36px
+    margin: 3px
+    line-height: 38px
+    font-size: 22px
+    color: $color-wet-asphalt
+    border-radius: 50%
+
+    &:hover, &:focus
+      color: white
+
+    &.fa-facebook
+      &:hover, &:focus
+        background-color: $color-belize-hole
+    &.fa-github-alt
+      &:hover, &:focus
+        background-color: #222
+    &.fa-twitter
+      &:hover, &:focus
+        background-color: $color-peter-river
+    &.fa-google-plus
+      &:hover, &:focus
+        background-color: $color-alizarin
+    &.fa-taller
+      position: relative
+      &:after
+        @extend %transition-navigation
+        content: ""
+        position: absolute
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+        background-image: image-url("mini-taller.png")
+        opacity: 1
+      &:hover, &:focus
+        background-image: image-url("mini-taller-white.png")
+        background-color: $color-pomegranate
+        &:after
+          opacity: 0
