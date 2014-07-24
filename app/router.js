@@ -24,7 +24,7 @@ angular.module(config.project.name)
     $httpProvider.interceptors.push('ghostRelativeUrlInterceptor');
   })
 
-  // HTTP Interceptor
+  // Ghost HTTP Interceptor
   .factory('ghostRelativeUrlInterceptor', function (AppConfig) {
     return {
       request: function (config) {
