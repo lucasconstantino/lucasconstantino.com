@@ -1,0 +1,28 @@
+/*
+ *------------------------------------------------------------------------------
+ * Themes
+ *------------------------------------------------------------------------------
+ * Use this file to define common transitions.
+ */
+
+
+
+// -----------------------------
+// Construct themes.
+// -----------------------------
+
+@each $name, $color in $colors
+  %theme-#{$name}
+    .header-section
+      background-color: $color
+      color: white
+    
+    .content-section
+      a
+        color: inherit
+      a:hover, a:focus
+        color: $color
+
+    %panel-item
+      &:hover, &:active
+        border-left-color: $color
