@@ -7,8 +7,12 @@
 angular.module('blog')
   
   .factory('blogPosts', function (AppConfig) {
-    return (AppConfig.posts || []).filter(function (post) {
+    return (AppConfig.posts || []).map(function (post) {
+
+      // Transform date string into Date objects.
       post.date = new Date(post.created_at);
-      return true;
+
+      // Map post itself.
+      return post;
     });
   });
