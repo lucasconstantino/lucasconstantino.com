@@ -7,6 +7,11 @@
   <meta name="description" content="{{meta_description}}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link href='http://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+  {{component "font-awesome/css/font-awesome.min.css"}}
+
   {{include "css/main.css"}}
 
   {{ghost_head}}
@@ -14,18 +19,45 @@
 <body class="{{body_class}}">
 
   <header id="site-head">
-    <h1 id="blog-title">
-      <a sref="blog">
-        <img src="http://www.gravatar.com/avatar/1cda89f1fbe853160953a0bb5aabe5f5?s=168" alt="Lucas">
-      </a>
-    </h1>
+    <div id="site-head-inner">
+      <h1 id="blog-profile">
+        <a id="blog-title" ui-sref="about">
+          <img src="http://www.gravatar.com/avatar/1cda89f1fbe853160953a0bb5aabe5f5?s=80" alt="Lucas">
+          <span>Lucas Constantino Silva</span>
+        </a>
 
-    <ul id="site-navigation">
-      <li><a ui-sref="blog" class="active">Blog</a></li>
-      <li><a sref="projects">Projects</a></li>
-      <li><a sref="ask">Ask a Question</a></li>
-      <li><a sref="about">About</a></li>
-    </ul>
+        <ul id="social-links">
+          <li><a href="//taller.net.br/#fourth" class="fa fa-taller"></a></li>
+          <li><a href="//github.com/lucasconstantino" class="fa fa-github-alt"></a></li>
+          <li><a href="//twitter.com/luconsilva" class="fa fa-twitter"></a></li>
+          <li><a href="//www.facebook.com/lucasconstantino" class="fa fa-facebook"></a></li>
+          <li><a href="//plus.google.com/+LucasConstantinoSilva" class="fa fa-google-plus"></a></li>
+        </ul>
+      </h1>
+
+      <ul id="site-navigation">
+        <li>
+          <a ui-sref="blog">
+            <span data-hover="Blog">Blog</span>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="projects">
+            <span data-hover="Projects">Projects</span>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="ask">
+            <span data-hover="Ask a Question">Ask a Question</span>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="about">
+            <span data-hover="About">About</span>
+          </a>
+        </li>
+      </ul>
+    </div>
 
     {{! The next line is an example of how to output the cover image that can be set in the Ghost admin area. Uncomment the line if you wish to use it. }}
     {{!-- {{#if @blog.cover}}<img src="{{@blog.cover}}" alt="Blog Cover" />{{/if}} --}}
