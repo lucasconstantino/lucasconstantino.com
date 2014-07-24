@@ -1,0 +1,90 @@
+/*------------------------------------------------------------------------------
+ * Color Definitions
+ *------------------------------------------------------------------------------
+ * Use this file to set color variables & functions.
+ * 
+ * Before starting to define your color variables, I'll advice you: colors (
+ * maybe more then other kind of variables in Sass) can get really trick and 
+ * messed up after some time, mostly because then tend to change a lot during 
+ * development. To help you make better decisions, I would advice you to read 
+ * the followng articles:
+ * 
+ * - http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-name-your-sass-variables-modularly/
+ * - http://sachagreif.com/sass-color-variables/
+ */
+
+
+
+// Color pallete: http://flatuicolors.com/
+
+$colors: (
+  turquoise:     #1ABC9C,
+  green-sea:     #16A085,
+  emerald:       #2ECC71,
+  nephritis:     #27AE60,
+  peter-river:   #3498DB,
+  belize-hole:   #2980B9,
+  amethyst:      #9B59B6,
+  wisteria:      #8E44AD,
+  wet-asphalt:   #34495E,
+  midnight-blue: #2C3E50,
+  sun-flower:    #F1C40F,
+  orange:        #F39C12,
+  carrot:        #E67E22,
+  pumpkin:       #D35400,
+  alizarin:      #E74C3C,
+  pomegranate:   #C0392B,
+  clouds:        #ECF0F1,
+  silver:        #BDC3C7,
+  concrete:      #95A5A6,
+  asbestos:      #7F8C8D
+);
+
+// ------------------------------------
+// Descriptive variables.
+// ------------------------------------
+
+$color-turquoise:     map-get($colors, turquoise);
+$color-green-sea:     map-get($colors, green-sea);
+$color-emerald:       map-get($colors, emerald);
+$color-nephritis:     map-get($colors, nephritis);
+$color-peter-river:   map-get($colors, peter-river);
+$color-belize-hole:   map-get($colors, belize-hole);
+$color-amethyst:      map-get($colors, amethyst);
+$color-wisteria:      map-get($colors, wisteria);
+$color-wet-asphalt:   map-get($colors, wet-asphalt);
+$color-midnight-blue: map-get($colors, midnight-blue);
+$color-sun-flower:    map-get($colors, sun-flower);
+$color-orange:        map-get($colors, orange);
+$color-carrot:        map-get($colors, carrot);
+$color-pumpkin:       map-get($colors, pumpkin);
+$color-alizarin:      map-get($colors, alizarin);
+$color-pomegranate:   map-get($colors, pomegranate);
+$color-clouds:        map-get($colors, clouds);
+$color-silver:        map-get($colors, silver);
+$color-concrete:      map-get($colors, concrete);
+$color-asbestos:      map-get($colors, asbestos);
+
+
+// ------------------------------------
+// Hierarchy variables.
+// ------------------------------------
+
+$color-primary: $color-peter-river;
+$color-secondary: $color-sun-flower;
+
+
+// ------------------------------------
+// Functional variables.
+// ------------------------------------
+
+$color-text: $color-midnight-blue;
+$color-heading: $color-midnight-blue;
+$color-link: $color-primary;
+$color-background: $color-clouds;
+
+// Reverse
+$color-reverse-text: $color-clouds;
+$color-reverse-heading: $color-clouds;
+$color-reverse-link: $color-secondary;
+$color-reverse-background: $color-midnight-blue;
