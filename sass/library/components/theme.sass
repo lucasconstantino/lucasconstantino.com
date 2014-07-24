@@ -1,0 +1,36 @@
+/*
+ *------------------------------------------------------------------------------
+ * Themes
+ *------------------------------------------------------------------------------
+ * Use this file to define common transitions.
+ */
+
+
+
+// -----------------------------
+// Wisteria theme.
+// -----------------------------
+
+%theme-wisteria
+  .header-section
+    background-color: $color-wisteria
+    color: white
+  
+  .content-section
+    a
+      color: inherit
+    a:hover, a:focus
+      color: $color-wisteria
+
+  %panel-item
+    &:hover, &:active
+      border-left-color: $color-wisteria
+
+
+
+$blue: #0000ff
+$color-link: $blue
+
+a
+  color: $color-link
+

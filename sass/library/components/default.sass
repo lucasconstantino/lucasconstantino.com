@@ -16,8 +16,6 @@
   line-height: $font-line
   color: $color-text
   background-color: $color-background
-  background-repeat: repeat
-  background-image: image-url("noise-lines.png")
 
 
 // -----------------------------
@@ -31,11 +29,10 @@
   &:hover, &:focus
     color: inherit
     text-decoration: underline
-  &[sref]
+  &[ui-sref]
     cursor: pointer
-  @for $h from 1 through 6
-    h#{$h} &:hover, h#{$h} &:focus
-      text-decoration: none
+  %hn &:hover, %hn &:focus
+    text-decoration: none
 
 
 // -----------------------------
@@ -43,11 +40,10 @@
 // -----------------------------
 
 %hn
-  margin: 0.625em 0 0.2em
+  margin: 0.4em 0 0.2em
   line-height: 1em
   font-family: $font-heading
   font-weight: 300
-  color: $color-heading
 
 %h1
   @extend %hn
@@ -95,7 +91,7 @@
 
 %blockquote
   border-left: 4px solid $color-primary
-  margin: 1em -9.5% 1em 0
+  margin: 2em 0
   padding: 0.6em 1em
   background-color: rgba(black, 0.02)
   p
