@@ -8,29 +8,21 @@
 
 
 // -----------------------------
-// Wisteria theme.
+// Construct themes.
 // -----------------------------
 
-%theme-wisteria
-  .header-section
-    background-color: $color-wisteria
-    color: white
-  
-  .content-section
-    a
-      color: inherit
-    a:hover, a:focus
-      color: $color-wisteria
+@each $name, $color in $colors
+  %theme-#{$name}
+    .header-section
+      background-color: $color
+      color: white
+    
+    .content-section
+      a
+        color: inherit
+      a:hover, a:focus
+        color: $color
 
-  %panel-item
-    &:hover, &:active
-      border-left-color: $color-wisteria
-
-
-
-$blue: #0000ff
-$color-link: $blue
-
-a
-  color: $color-link
-
+    %panel-item
+      &:hover, &:active
+        border-left-color: $color
