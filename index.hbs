@@ -21,7 +21,7 @@
   <header id="site-head">
     <div id="site-head-inner">
       <h1 id="blog-profile">
-        <a id="blog-title" ui-sref="about">
+        <a id="blog-title" ui-sref="home">
           <img src="http://www.gravatar.com/avatar/1cda89f1fbe853160953a0bb5aabe5f5?s=80" alt="Lucas">
           <span>Lucas Constantino Silva</span>
         </a>
@@ -42,16 +42,21 @@
           </a>
         </li>
         <li>
+          <a ui-sref="community">
+            <span data-hover="Community">Community</span>
+          </a>
+        </li>
+        <li class="disabled">
           <a ui-sref="projects">
             <span data-hover="Projects">Projects</span>
           </a>
         </li>
-        <li>
+        <li class="disabled">
           <a ui-sref="ask">
             <span data-hover="Ask a Question">Ask a Question</span>
           </a>
         </li>
-        <li>
+        <li class="disabled">
           <a ui-sref="about">
             <span data-hover="About">About</span>
           </a>
