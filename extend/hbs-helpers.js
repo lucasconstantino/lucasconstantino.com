@@ -79,7 +79,7 @@ function renderTag(options) {
  */
 function include(type, context, options) {
   var output    = ''
-    , basePath  = config().paths.subdir
+    , basePath  = config.paths.subdir
     , assetPath = basePath + '/' + (type ? type + '/' : '')
     , renderer  = {
       '.js': function (filepath, attributes) {
