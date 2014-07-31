@@ -9,7 +9,9 @@ var rootPath  = '../../../../'
   , path      = require('path')
   , fs        = require('fs')
   , _         = require('lodash')
-  , project   = require('../package.json');
+  , walk      = require('walk')
+  , project   = require('../package.json')
+  , themePath = path.normalize(__dirname + '/../');
 
 // Templates.
 var hbsTag = hbs.compile(fs.readFileSync(__dirname + '/templates/tag.hbs', 'utf8'));
@@ -57,6 +59,30 @@ hbs.registerHelper('config', function (context) {
   });
 
   return safeString(JSON.stringify(config));
+});
+
+/**
+ * Angular templates cache helper.
+ */
+hbs.registerHelper('views', function (options) {
+  
+  var viewsPath = path.normalize(__dirname + '/../views')
+    , result    = '';
+
+  // Walk views recursively.
+  walk.walkSync(viewsPath, {
+    followLinks: false
+  , listeners: {
+      file: function (root, file, next) {
+        result += options.fn({
+          path: root.replace(themePath, '/') + '/' + file.name,
+          markup: fs.readFileSync(root + '/' + file.name, 'utf8')
+        });
+      }
+    }
+  });
+
+  return result;
 });
 
 

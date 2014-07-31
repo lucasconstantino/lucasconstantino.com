@@ -14,6 +14,13 @@
 
   {{include "css/main.css"}}
 
+  {{! Cache view templates }}
+  {{#views}}
+    <script type="text/ng-template" id="{{path}}">
+      {{{markup}}}
+    </script>
+  {{/views}}
+
   {{ghost_head}}
 </head>
 <body class="{{body_class}}">
