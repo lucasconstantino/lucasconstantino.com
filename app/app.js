@@ -14,6 +14,7 @@ angular.module(config.project.name,
   , 'ngAnimate'
   , 'ui.router'
   , 'duScroll'
+  , 'ng-prism'
 
   // Sub-modules
   , 'blog'
