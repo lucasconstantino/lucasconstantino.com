@@ -18,6 +18,7 @@ angular.module(config.project.name,
 
   // Sub-modules
   , 'blog'
+  , 'slides'
   ])
 
   // Application Constants
