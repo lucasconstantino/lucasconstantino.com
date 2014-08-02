@@ -37,4 +37,12 @@ angular.module(config.project.name)
         return config;
       }
     }
+  })
+
+  // Scroll effect.
+  .run(function ($rootScope, $document) {
+    // @todo: limit transition for when main view is changed only.
+    $rootScope.$on('$stateChangeStart', function () {
+      $document.scrollTop(0, 500);
+    });
   });
