@@ -14,7 +14,7 @@ angular.module('blog')
       .state('blog', {
         url: '/blog',
         controller: 'BlogPostsController',
-        templateUrl: 'views/blog-posts.html'
+        templateUrl: 'views/blog/posts.html'
       })
 
       // Blog post route.
@@ -30,7 +30,7 @@ angular.module('blog')
         views: {
           '@': {
             controller: 'BlogPostController',
-            templateUrl: 'views/blog-post.html'
+            templateUrl: 'views/blog/post.html'
           }
         }
       })
