@@ -11,7 +11,8 @@ var rootPath  = '../../../../'
   , _         = require('lodash')
   , walk      = require('walk')
   , project   = require('../package.json')
-  , themePath = path.normalize(__dirname + '/../');
+  , themePath = path.normalize(__dirname + '/../')
+  , slides    = require('./slides');
 
 // Templates.
 var hbsTag = hbs.compile(fs.readFileSync(__dirname + '/templates/tag.hbs', 'utf8'));
@@ -56,6 +57,10 @@ hbs.registerHelper('config', function (context) {
   // Join project information.
   _.assign(config, {
     project: project
+  , slides: {
+      decks: slides.getDecks()
+    , user: slides.getUser()
+    }
   });
 
   return safeString(JSON.stringify(config));
