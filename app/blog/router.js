@@ -1,19 +1,19 @@
-/**
+7/**
  * ------------------------------------------------------------------------
  * Blog Router
  * ------------------------------------------------------------------------
  */
 
 angular.module('blog')
-  
-  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+
+  .config(function ($stateProvider) {
     
     $stateProvider
 
       // Blog main route.
       .state('blog', {
         url: '/blog',
-        templateUrl: 'views/list.html',
+        templateUrl: 'views/blog-posts.html',
       })
 
       // Blog post route.
@@ -21,14 +21,8 @@ angular.module('blog')
         url: '/{slug}',
         views: {
           '@': {
-            templateUrl: 'views/post.html'
+            templateUrl: 'views/blog-post.html'
           }
         }
       })
-  })
-
-  .run(function ($rootScope, $document) {
-    $rootScope.$on('$stateChangeStart', function () {
-      $document.scrollTop(0, 500);
-    });
   });
