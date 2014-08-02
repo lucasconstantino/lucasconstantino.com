@@ -13,14 +13,23 @@ angular.module('blog')
       // Blog main route.
       .state('blog', {
         url: '/blog',
-        templateUrl: 'views/blog-posts.html',
+        controller: 'BlogPostsController',
+        templateUrl: 'views/blog-posts.html'
       })
 
       // Blog post route.
       .state('blog.post', {
         url: '/{slug}',
+        resolve: {
+          post: function ($stateParams, blogPosts) {
+            return blogPosts.filter(function (post) {
+              return post.slug == $stateParams.slug;
+            })[0] || {};
+          }
+        },
         views: {
           '@': {
+            controller: 'BlogPostController',
             templateUrl: 'views/blog-post.html'
           }
         }

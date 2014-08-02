@@ -7,13 +7,11 @@
 angular.module('blog')
   
   // Blog list.
-  .controller('BlogListController', function ($scope, blogPosts) {
+  .controller('BlogPostsController', function ($scope, blogPosts) {
     $scope.posts = blogPosts;
   })
   
   // Blog post.
-  .controller('BlogPostController', function ($scope, $stateParams, blogPosts) {
-    $scope.post = blogPosts.filter(function (post) {
-      return post.slug == $stateParams.slug;
-    })[0] || {};
+  .controller('BlogPostController', function ($scope, post) {
+    $scope.post = post
   });
