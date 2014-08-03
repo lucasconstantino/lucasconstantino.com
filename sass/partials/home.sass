@@ -14,7 +14,6 @@
     font-weight: 300
     font-style: italic
     .section-inner
-      @extend %readable
       @extend %remarkable
 
     .love
@@ -27,32 +26,12 @@
       -webkit-animation: love 1s infinite
       animation: love 1s infinite
 
-  .blog-posts
+  .header-section
     .section-inner
       @extend %readable
       padding-top: 6rem
       padding-bottom: 6rem
       text-align: center
 
-    .section-icon
-      display: inline-block
-      width: 1.6em
-      height: 1.6em
-      margin-bottom: 3rem
-      border: 0.08em solid white
-      border-radius: 50%
-      line-height: 1.7em
-      text-align: center
-      box-sizing: content-box
-      background-color: white
-      color: $color-wisteria
-
-      &:hover, &:active
-        background-color: transparent
-        color: white
-
     .section-title span
       display: none
-
-    .post
-      // @extend %col-md-4

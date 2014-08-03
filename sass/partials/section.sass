@@ -6,6 +6,15 @@
 
 
 // -----------------------------
+// Section themes.
+// -----------------------------
+
+@each $name, $theme in $section-theme
+  .#{$name}
+    @extend %theme-#{$theme}
+
+
+// -----------------------------
 // Shared styles.
 // -----------------------------
 
@@ -16,6 +25,22 @@
     position: relative
     padding-top: 3rem
     padding-bottom: 3rem
+
+  .section-icon
+    display: inline-block
+    width: 1.6em
+    height: 1.6em
+    margin-bottom: 3rem
+    border: 0.08em solid white
+    border-radius: 50%
+    line-height: 1.7em
+    text-align: center
+    box-sizing: content-box
+    background-color: white
+
+    &:hover, &:active
+      background-color: transparent
+      color: white
 
 
 // -----------------------------
