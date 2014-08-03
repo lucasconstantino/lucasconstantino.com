@@ -7,7 +7,7 @@
     </div>
   </header>
 
-  <div ng-controller="BlogPostsController" class="blog-posts">
+  <div ng-controller="BlogPostsController" class="content-type blog blog-posts">
     <header class="header-section">
       <div class="section-inner">
         <h2 class="section-title">
@@ -27,6 +27,32 @@
                     <span class="date-month">{{post.date | date:"MMM"}}</span>
                   </time>
                 </div>
+              </header>
+            </a>
+          </article>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div ng-controller="DeckListController" class="content-type slides slide-decks">
+    <header class="header-section">
+      <div class="section-inner">
+        <h2 class="section-title">
+          <a ui-sref="talks" class="section-icon fa fa-comments-o"></a>
+          <span>Latest Talks</span>
+        </h2>
+
+        <div class="article-list deck-list">
+          <article class="deck"
+            ng-repeat="deck in decks | limitTo:4">
+            <a ui-sref="talk.talks({slug: '{{deck.slug}}'})">
+              <header>
+                <h4>{{deck.title}}</h4>
+                <span class="deck-views"
+                  ng-id="deck.views">{{deck.views}} <i class="fa fa-eye"></i></span>
+                <span class="deck-likes"
+                  ng-if="deck.likes">{{deck.likes}} <i class="fa fa-star"></i></span>
               </header>
             </a>
           </article>
