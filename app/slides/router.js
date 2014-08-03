@@ -13,6 +13,7 @@ angular.module('slides')
       // Slides main route.
       .state('talks', {
         url: '/talks',
+        controller: 'DeckListController',
         templateUrl: 'views/slides/talks.html',
       })
 

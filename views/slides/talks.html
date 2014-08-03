@@ -1,0 +1,43 @@
+
+<div class="slides slide-decks">
+  <header class="header-section">
+    <div class="section-inner">
+      <h1 class="page-title">Talking Decks <small>Powered by <a href="//slid.es">slid.es</a></small></h1>
+    </div>
+  </header>
+
+  <section class="content-section">
+    <div class="section-inner">
+
+      <div class="article-list deck-list">
+        <article class="deck"
+          ng-repeat="deck in decks">
+          <a ui-sref="talks.talk({slug: '{{deck.slug}}'})">
+            <header>
+              <h2>{{deck.title}}</h2>
+              <div class="deck-meta-date">
+                <time datetime="{{deck.published | date:'yyyy-MM-dd'}}">
+                  <span class="date-day">{{deck.published | date:"d"}}</span>
+                  <span class="date-month">{{deck.published | date:"MMM"}}</span>
+                  <span class="date-year">{{deck.published | date:"yyyy"}}</span>
+                </time>
+              </div>
+            </header>
+
+            <div class="deck-thumbnail"
+              style="background-image: url('{{deck.image}}')"></div>
+
+            <footer>
+              <span class="post-meta">
+                <span class="deck-views"
+                  ng-id="deck.views">{{deck.views}} <i class="fa fa-eye"></i></span>
+                <span class="deck-likes"
+                  ng-if="deck.likes">{{deck.likes}} <i class="fa fa-star"></i></span>
+              </span>
+            </footer>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
