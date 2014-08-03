@@ -37,3 +37,21 @@
     color: inherit
     border-style: solid
     background-color: white
+
+
+%zipper
+  position: relative
+  &:before,
+  &:after
+    content: ""
+    position: absolute
+    right: 0
+    border-top: 8px dotted rgba(0, 0, 0, 0.15)
+
+  &:before
+    top: 0
+    left: 0
+
+  &:after
+    top: -8px
+    left: -1px
