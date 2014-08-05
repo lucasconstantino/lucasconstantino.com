@@ -37,4 +37,12 @@
       display: none
 
   .content-type + .content-type
-    @extend %zipper
+    position: relative
+    &:before
+      +chess-board(rgba(black, 0.2), transparent, 16px)
+      content: ""
+      position: absolute
+      top: -8px
+      right: 0
+      left: 0
+      height: 16px

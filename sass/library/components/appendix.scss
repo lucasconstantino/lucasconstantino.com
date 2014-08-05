@@ -1,0 +1,26 @@
+/*
+ *------------------------------------------------------------------------------
+ * Decoration Appendix
+ *------------------------------------------------------------------------------
+ */
+
+
+
+@mixin chess-board($color1, $color2, $size) {
+  @include background-size($size $size);
+  $size: $size / 2;
+
+  background-image:
+    -moz-linear-gradient(45deg , $color1 25%, transparent 25%), 
+    -moz-linear-gradient(-45deg, $color1 25%, transparent 25%),
+    -moz-linear-gradient(45deg , transparent 75%, $color1 75%),
+    -moz-linear-gradient(-45deg, transparent 75%, $color1 75%);
+  background-image:
+    -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, $color1), color-stop(.25, transparent)), 
+    -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, $color1), color-stop(.25, transparent)),
+    -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, $color1)),
+    -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, $color1));
+
+  background-position: 0 0, $size 0, $size ($size * -1), 0 ($size * -1);
+  background-color: $color2;
+}
