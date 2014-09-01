@@ -1,0 +1,51 @@
+
+<div class="slide-deck modal">
+  <section class="featured-section">
+    <div class="section-inner">
+      <iframe src="{{embedUrl}}" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-inner">
+      <h2>
+        {{deck.title}}
+      </h2>
+
+      <div class="deck-meta">
+        <span class="deck-date">
+          <time datetime="{{deck.published | date:'yyyy-MM-dd'}}">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-day">{{deck.published | date:"d"}}</span>
+            <span class="date-month">{{deck.published | date:"MMM"}}</span>
+            <span class="date-year">{{deck.published | date:"yyyy"}}</span>
+          </time>
+        </span>
+        <span class="deck-views"
+          ng-if="deck.views"><i class="fa fa-eye"> {{deck.views}}</i></span>
+        <span class="deck-likes"
+          ng-if="deck.likes"><i class="fa fa-star"> {{deck.likes}}</i></span>
+      </div>
+    </div>
+    <div class="section-inner">
+      <h2>
+        {{deck.title}}
+      </h2>
+
+      <div class="deck-meta">
+        <span class="deck-date">
+          <time datetime="{{deck.published | date:'yyyy-MM-dd'}}">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-day">{{deck.published | date:"d"}}</span>
+            <span class="date-month">{{deck.published | date:"MMM"}}</span>
+            <span class="date-year">{{deck.published | date:"yyyy"}}</span>
+          </time>
+        </span>
+        <span class="deck-views"
+          ng-if="deck.views"><i class="fa fa-eye"> {{deck.views}}</i></span>
+        <span class="deck-likes"
+          ng-if="deck.likes"><i class="fa fa-star"> {{deck.likes}}</i></span>
+      </div>
+    </div>
+  </section>
+</div>
