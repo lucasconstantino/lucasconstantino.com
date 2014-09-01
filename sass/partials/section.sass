@@ -5,6 +5,9 @@
 
 
 
+.wrapper
+  background-color: $color-background
+
 // -----------------------------
 // Section themes.
 // -----------------------------
@@ -27,21 +30,46 @@
     padding-top: 3rem
     padding-bottom: 3rem
 
-  .section-icon
-    display: inline-block
-    width: 1.6em
-    height: 1.6em
-    margin-bottom: 3rem
-    border: 0.08em solid white
-    border-radius: 50%
-    line-height: 1.7em
-    text-align: center
-    box-sizing: content-box
-    background-color: white
+.section-icon
+  display: inline-block
+  width: 1.6em
+  height: 1.6em
+  margin-bottom: 3rem
+  border-radius: 50%
+  line-height: 1.7em
+  text-align: center
+  box-sizing: content-box
+  background-color: white
+  box-shadow: 0 0 0 0.125em rgba(0, 0, 0, 0.08)
+  overflow: hidden
 
-    &:hover, &:active
-      background-color: transparent
-      color: white
+  span
+    @extend %transition-navigation
+    display: inline
+    font-family: $font-lato
+    font-weight: 300
+    top: 0
+    position: relative
+    text-transform: lowercase
+
+    &:before
+      display: inline-block
+
+    &.fa:before
+      font-family: FontAwesome
+      font-weight: normal
+      font-size: 1.3em
+      line-height: 2em
+
+  &:hover,
+  &:active
+    box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.3)
+
+  &:hover,
+  &:active,
+  .active-view &
+    span
+      top: -1.7em
 
 
 // -----------------------------
