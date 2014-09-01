@@ -4,15 +4,10 @@
  */
 
 #site-content
-  &.ng-enter,
-  &.ng-leave
-    +transition(all 500ms ease)
+  &.ng-enter
+    @extend %transition-state
   &.ng-enter
     opacity: 0
   &.ng-enter-active
     opacity: 1
-  &.ng-leave
-    opacity: 1
-  &.ng-leave-active
-    opacity: 0
     
