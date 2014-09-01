@@ -14,6 +14,7 @@ angular.module(config.project.name,
   , 'ngAnimate'
   , 'ui.router'
   , 'duScroll'
+  , 'konami'
 
   // Sub-modules
   , 'blog'
@@ -36,5 +37,13 @@ angular.module(config.project.name,
       // Update previous state info.
       $rootScope.$prevState = to;
       $rootScope.$prevStateParams = toParams;
+
+      // Handle modals.
+      // @todo: handle child modal states.
+      if (to.views && to.modal) {
+        $rootScope.modal = true;
+      } else {
+        $rootScope.modal = false;
+      }
     });
   });
