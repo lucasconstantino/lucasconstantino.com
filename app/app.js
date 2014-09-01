@@ -7,6 +7,8 @@
  * that might be needed by application.
  */
 
+window.disqus_shortname = 'lucasconstantino';
+
 angular.module(config.project.name,
   
   // Application Dependencies
@@ -15,6 +17,7 @@ angular.module(config.project.name,
   , 'ui.router'
   , 'duScroll'
   , 'konami'
+  , 'ngDisqus'
 
   // Sub-modules
   , 'blog'
@@ -25,18 +28,27 @@ angular.module(config.project.name,
   .constant('AppConfig', config)
 
   // Application Start Event
-  .run(function ($rootScope, $state, $stateParams) {
+  .run(function ($rootScope, $state, $stateParams, $location) {
 
     // Give easy access to states on all modules via rootScope.
-    $rootScope.$state = $rootScope.$prevState = $state;
-    $rootScope.$stateParams = $rootScope.$prevStateParams = $stateParams;
+    $rootScope.state = $state.current;
+    $rootScope.stateParams = $stateParams;
+
+    // Record state changes.
+    $rootScope.prevStates = [];
 
     // Track state changes.
     $rootScope.$on('$stateChangeSuccess', function (e, to, toParams, from, fromParams) {
       
-      // Update previous state info.
-      $rootScope.$prevState = to;
-      $rootScope.$prevStateParams = toParams;
+      // Update current state info.
+      $rootScope.state = to;
+      $rootScope.stateParams = toParams;
+
+      // Update state history.
+      $rootScope.prevStates.push({
+        state: from,
+        params: fromParams
+      });
 
       // Handle modals.
       // @todo: handle child modal states.
@@ -45,5 +57,32 @@ angular.module(config.project.name,
       } else {
         $rootScope.modal = false;
       }
-    });
+    });    
+
+    /**
+     * Closes any opened modal.
+     */
+    $rootScope.closeModal = function (e) {
+      if (this.modal && (!e || e.target.parentNode.classList.contains('modal-container'))) {
+        var to = $rootScope.prevStates[$rootScope.prevStates.length - 1];
+
+        if (to.state.abstract) {
+          to = $state.$current;
+
+          // Recursively try to find nearest non-abstract parent.
+          while (to.parent) {
+            if (!to.parent.self.abstract) {
+              $state.go(to.parent.self);
+            }
+
+            to = to.parent;
+          }
+
+          // Move home :(
+          $location.url('/');
+        } else {
+          $state.go(to.state, to.params);
+        }
+      }
+    }
   });
