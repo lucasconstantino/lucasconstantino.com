@@ -2,7 +2,7 @@
 <div class="slides slide-decks">
   <header class="header-section">
     <div class="section-inner">
-      <h1 class="page-title">Talking Decks <small>Powered by <a href="//slid.es">slid.es</a></small></h1>
+      <h1 class="page-title">Talking Decks <small>Powered by <a href="http://slid.es" target="_blank">slid.es</a></small></h1>
     </div>
   </header>
 
@@ -12,7 +12,7 @@
       <div class="article-list deck-list">
         <article class="deck"
           ng-repeat="deck in decks">
-          <a ui-sref="talks.talk({slug: '{{deck.slug}}'})">
+          <a ui-sref="talks.deck({slug: '{{deck.slug}}'})">
             <header>
               <h2>{{deck.title}}</h2>
               <div class="deck-meta-date">
