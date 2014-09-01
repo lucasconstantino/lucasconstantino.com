@@ -12,6 +12,9 @@ angular.module('slides')
   })
   
   // Single slide deck.
-  .controller('DeckController', function ($scope, deck) {
+  .controller('DeckController', function ($scope, $sce, deck) {
     $scope.deck = deck;
+
+    // iFrame src.
+    $scope.embedUrl = $sce.trustAsResourceUrl(deck.url + '/embed?style=ligth');
   });
