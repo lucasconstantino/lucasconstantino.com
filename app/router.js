@@ -40,9 +40,18 @@ angular.module(config.project.name)
   })
 
   // Scroll effect.
-  .run(function ($rootScope, $document) {
+  .run(function ($rootScope) {
+
+    var $body = $('body');
+
     // @todo: limit transition for when main view is changed only.
-    $rootScope.$on('$stateChangeStart', function () {
-      $document.scrollTop(0, 500);
+    $rootScope.$on('$stateChangeStart', function (e, to, toParam, from, fromParam) {
+      if (from.name && $body.scrollTop() && (!to.modal && !from.modal)) {
+        setTimeout(function () {
+          $body.animate({
+            scrollTop: 0
+          }, 500, 'easeOutExpo');
+        }, 10);
+      }
     });
   });
