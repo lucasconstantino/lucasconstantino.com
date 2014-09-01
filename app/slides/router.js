@@ -18,7 +18,7 @@ angular.module('slides')
       })
 
       // Deck route.
-      .state('talks.talk', {
+      .state('talks.deck', {
         url: '/{slug}',
         resolve: {
           deck: function ($stateParams, decks) {
@@ -27,10 +27,11 @@ angular.module('slides')
             })[0] || {};
           }
         },
+        modal: true,
         views: {
-          'talk-modal': {
-            controller: 'TalkController',
-            templateUrl: 'views/slides/talk.html'
+          'modal@': {
+            controller: 'DeckController',
+            templateUrl: 'views/slides/deck.html'
           }
         }
       })
