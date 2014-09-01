@@ -1,18 +1,26 @@
 
 <div id="home">
-  <header id="intro" class="header-section">
+
+  <!-- <h1 ng-if="viewing" class="current-section-title">{{viewing}}</h1> -->
+
+  <header id="intro" class="header-section"
+    scroll-spy=''>
     <div class="section-inner">
-      <p>Lucas Constantino Silva is a developer and kind of a web designer. He has knowledge on all major languages of the web, such as HTML, CSS (with a drop of Sass), PHP and lovely JavaScript. He works at <a href="https://taller.net.br/">Taller</a>, a great company with amazing <s>people</s> friends.</p>
+      <p>Lucas Constantino Silva is a developer and kind of a web designer. He has knowledge on all major languages of the web, such as HTML, CSS (with a drop of Sass), PHP and lovely JavaScript. He works at <a href="https://taller.net.br/">Taller</a>, a great company with <s>nice</s> awesome people.</p>
       <p style="font-size: 0.8em">He definitely <i class="fa fa-heart love"></i> his girlfriend.</p>
     </div>
   </header>
 
-  <div ng-controller="BlogPostsController" class="content-type blog blog-posts">
+
+  <div class="content-type blog blog-posts"
+    ng-controller="BlogPostsController"
+    scroll-spy='Blog'>
     <header class="header-section">
       <div class="section-inner">
         <h2 class="section-title">
-          <a ui-sref="blog" class="section-icon fa fa-rss"></a>
-          <span>Latest Posts</span>
+          <a ui-sref="blog" class="section-icon">
+            <span class="ghost-icon">Blog</span>
+          </a>
         </h2>
 
         <div class="article-list post-list">
@@ -35,18 +43,21 @@
     </header>
   </div>
 
-  <div ng-controller="DeckListController" class="content-type slides slide-decks">
+  <div class="content-type slides slide-decks"
+    ng-controller="DeckListController"
+    scroll-spy='Talks'>
     <header class="header-section">
       <div class="section-inner">
         <h2 class="section-title">
-          <a ui-sref="talks" class="section-icon fa fa-comments-o"></a>
-          <span>Latest Talks</span>
+          <a ui-sref="talks" class="section-icon">
+            <span class="fa fa-comments-o">Talks</span>
+          </a>
         </h2>
 
         <div class="article-list deck-list">
           <article class="deck"
             ng-repeat="deck in decks | limitTo:4">
-            <a ui-sref="talk.talks({slug: '{{deck.slug}}'})">
+            <a ui-sref="talks.deck({slug: '{{deck.slug}}'})">
               <header>
                 <h4>{{deck.title}}</h4>
                 <span class="deck-views"
@@ -60,5 +71,4 @@
       </div>
     </header>
   </div>
-
 </div>
