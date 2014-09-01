@@ -97,7 +97,7 @@
     </footer>
   </div>
 
-  <div class="modal-container">
+  <div class="modal-container" ng-click="closeModal($event)">
     <div ui-view="modal"></div>
   </div>
 
@@ -125,6 +125,7 @@
   {{component "angular-ui-router/release/angular-ui-router.js"}}
   {{component "angular-scroll/angular-scroll.js"}}
   {{component "angular-konami/angular-konami.js"}}
+  {{component "angular-disqus/angular-disqus.js"}}
 
   
   {{! Application modules }}
