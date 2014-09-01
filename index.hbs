@@ -23,78 +23,83 @@
 
   {{ghost_head}}
 </head>
-<body class="{{body_class}}">
+<body class="{{body_class}}" ng-class="{'open-modal': modal}">
+  <div class="wrapper">
+    <header id="site-head">
+      <div id="site-head-inner">
+        <h1 id="blog-profile">
+          <a id="blog-title" ui-sref="home">
+            <img src="http://www.gravatar.com/avatar/1cda89f1fbe853160953a0bb5aabe5f5?s=80" alt="Lucas">
+            <span>Lucas Constantino Silva</span>
+          </a>
 
-  <header id="site-head">
-    <div id="site-head-inner">
-      <h1 id="blog-profile">
-        <a id="blog-title" ui-sref="home">
-          <img src="http://www.gravatar.com/avatar/1cda89f1fbe853160953a0bb5aabe5f5?s=80" alt="Lucas">
-          <span>Lucas Constantino Silva</span>
-        </a>
+          <ul id="social-links">
+            <li><a href="//taller.net.br/#fourth" class="fa fa-taller"></a></li>
+            <li><a href="//github.com/lucasconstantino" class="fa fa-github-alt"></a></li>
+            <li><a href="//twitter.com/luconsilva" class="fa fa-twitter"></a></li>
+            <li><a href="//www.facebook.com/lucasconstantino" class="fa fa-facebook"></a></li>
+            <li><a href="//plus.google.com/+LucasConstantinoSilva" class="fa fa-google-plus"></a></li>
+          </ul>
+        </h1>
 
-        <ul id="social-links">
-          <li><a href="//taller.net.br/#fourth" class="fa fa-taller"></a></li>
-          <li><a href="//github.com/lucasconstantino" class="fa fa-github-alt"></a></li>
-          <li><a href="//twitter.com/luconsilva" class="fa fa-twitter"></a></li>
-          <li><a href="//www.facebook.com/lucasconstantino" class="fa fa-facebook"></a></li>
-          <li><a href="//plus.google.com/+LucasConstantinoSilva" class="fa fa-google-plus"></a></li>
+        <ul id="site-navigation">
+          <li>
+            <a ui-sref="blog">
+              <span data-hover="Blog">Blog</span>
+            </a>
+          </li>
+          <li>
+            <a ui-sref="talks">
+              <span data-hover="Talks">Talks</span>
+            </a>
+          </li>
+          <li class="disabled">
+            <a ui-sref="projects">
+              <span data-hover="Projects">Projects</span>
+            </a>
+          </li>
+          <li class="disabled">
+            <a ui-sref="ask">
+              <span data-hover="Ask a Question">Ask a Question</span>
+            </a>
+          </li>
+          <li class="disabled">
+            <a ui-sref="about">
+              <span data-hover="About">About</span>
+            </a>
+          </li>
+          <li>
+            <a ui-sref="home">
+              <span>
+                <i class="fa fa-home"></i>
+              </span>
+            </a>
+          </li>
         </ul>
-      </h1>
-
-      <ul id="site-navigation">
-        <li>
-          <a ui-sref="blog">
-            <span data-hover="Blog">Blog</span>
-          </a>
-        </li>
-        <li>
-          <a ui-sref="talks">
-            <span data-hover="Talks">Talks</span>
-          </a>
-        </li>
-        <li class="disabled">
-          <a ui-sref="projects">
-            <span data-hover="Projects">Projects</span>
-          </a>
-        </li>
-        <li class="disabled">
-          <a ui-sref="ask">
-            <span data-hover="Ask a Question">Ask a Question</span>
-          </a>
-        </li>
-        <li class="disabled">
-          <a ui-sref="about">
-            <span data-hover="About">About</span>
-          </a>
-        </li>
-        <li>
-          <a ui-sref="home">
-            <span>
-              <i class="fa fa-home"></i>
-            </span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    {{! The next line is an example of how to output the cover image that can be set in the Ghost admin area. Uncomment the line if you wish to use it. }}
-    {{!-- {{#if @blog.cover}}<img src="{{@blog.cover}}" alt="Blog Cover" />{{/if}} --}}
-  </header>
-
-  <!-- Main App view -->
-  <main id="site-content"
-    ui-view></main>
-
-  <footer id="site-footer">
-    <div class="footer-section">
-      <div class="section-inner">
-        <a href="{{@blog.url}}/rss/">Subscribe!</a>
-        <section>All content copyright <a href="/">{{@blog.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
-        <section>Proudly published with <a href="http://ghost.org">Ghost</a></section>
       </div>
-    </div>
-  </footer>
+
+      {{! The next line is an example of how to output the cover image that can be set in the Ghost admin area. Uncomment the line if you wish to use it. }}
+      {{!-- {{#if @blog.cover}}<img src="{{@blog.cover}}" alt="Blog Cover" />{{/if}} --}}
+    </header>
+
+    <!-- Main App view -->
+    <main id="site-content"
+      ui-view></main>
+
+    <footer id="site-footer">
+      <div class="footer-section">
+        <div class="section-inner">
+          <a href="{{@blog.url}}/rss/">Subscribe!</a>
+          <section>All content copyright <a href="/">{{@blog.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
+          <section>Proudly published with <a href="http://ghost.org">Ghost</a></section>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="modal-container">
+    <div ui-view="modal"></div>
+  </div>
 
   {{! Ghost scripts }}
   {{ghost_foot}}
@@ -110,13 +115,16 @@
 
   {{! Vendor components }}
   {{component "jquery/dist/jquery.js"}}
+  {{component "jquery-ui/jquery-ui.js"}}
+  {{component "lodash/dist/lodash.js"}}
   {{component "angular/angular.js"}}
   {{component "angular-route/angular-route.js"}}
   {{component "angular-animate/angular-animate.js"}}
   {{component "angular-sanitize/angular-sanitize.js"}}
   {{component "angular-scroll/angular-scroll.js"}}
   {{component "angular-ui-router/release/angular-ui-router.js"}}
-  {{component "lodash/dist/lodash.js"}}
+  {{component "angular-scroll/angular-scroll.js"}}
+  {{component "angular-konami/angular-konami.js"}}
 
   
   {{! Application modules }}
@@ -135,6 +143,7 @@
 
   {{! Application }}
   {{app "app.js"}}
+  {{app "directives.js"}}
   {{app "router.js"}}
   {{app "init.js"}}
 
