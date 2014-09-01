@@ -9,8 +9,12 @@
 angular.module(config.project.name)
   
   // Routing Configuration
-  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     
+    // Use HTML5 urls.
+    $locationProvider.html5Mode(true);
+    // $locationProvider.hashPrefix('!');
+
     // Make Blog the default route.
     $urlRouterProvider.otherwise('/');
 
