@@ -2,7 +2,10 @@
 <div class="slide-deck modal">
   <section class="featured-section">
     <div class="section-inner">
-      <iframe src="{{embedUrl}}" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      <div class="cover" style="background-color: {{deck.colorRGB}}"></div>
+      <iframe src="{{embedUrl}}" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
+        ng-load="ready = true"
+        ng-class="{'ready': ready}"></iframe>
     </div>
   </section>
 
@@ -10,8 +13,8 @@
     <div class="section-inner">
       <h2>
         {{deck.title}}
-      </h2
->
+      </h2>
+
       <div class="deck-meta">
         <span class="deck-date">
           <time datetime="{{deck.published | date:'yyyy-MM-dd'}}">
