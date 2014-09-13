@@ -61,9 +61,8 @@ angular.module(config.project.name)
    */
   .directive('ngLoad', function() {
     return function(scope, element, attr) {
-      element.bind('load', function(evt) {
+      element.bind('load', function() {
         scope.$apply(attr.ngLoad);
-        debugger;
       });
     };
   });
