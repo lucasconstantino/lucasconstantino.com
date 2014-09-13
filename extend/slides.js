@@ -3,7 +3,8 @@
  * Slid.es API connection through Kimono.
  */
 
-var https = require('https');
+var https = require('https')
+  , couleur = require('couleur');
 
 // Configuration.
 var frequency = 86400000 // daily.
@@ -43,8 +44,6 @@ function update() {
       decks  = parsed && parsed.results && parsed.results.decks || [];
       user   = parsed && parsed.results && parsed.results.user && parsed.results.user[0] || {};
 
-      debugger;
-
       // Clean deck data.
       decks.forEach(cleanDeck);
 
@@ -75,6 +74,35 @@ function cleanDeck(deck) {
   var year  = publishedSplit[3];
 
   deck.published = new Date(month + ' ' + day + ', ' + year);
+
+  findDominantColor(deck);
+}
+
+/**
+ * Parses a deck image to find the dominant color.
+ */
+function findDominantColor(deck) {
+  var data
+    , pos = 0;
+
+  if (deck.image) {
+    https.get(deck.image, function (res) {
+      data = new Buffer(parseInt(res.headers['content-length'], 10));
+
+      res.on('data', function (chunk) {
+        chunk.copy(data, pos);
+        pos += chunk.length;
+      });
+
+      res.on('end', function () {
+        couleur.getColor(data, 1, function (err, color) {
+          if (!err) {
+            deck.color = color;
+          }
+        });
+      });
+    });
+  }
 }
 
 // First time request.
