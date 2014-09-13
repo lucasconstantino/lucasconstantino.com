@@ -28,7 +28,7 @@ angular.module(config.project.name,
   .constant('AppConfig', config)
 
   // Application Start Event
-  .run(function ($rootScope, $state, $stateParams, $location) {
+  .run(function ($rootScope, $state, $stateParams, $location, $timeout) {
 
     // Give easy access to states on all modules via rootScope.
     $rootScope.state = $state.current;
@@ -53,7 +53,9 @@ angular.module(config.project.name,
       // Handle modals.
       // @todo: handle child modal states.
       if (to.views && to.modal) {
-        $rootScope.modal = true;
+        $timeout(function () {
+          $rootScope.modal = true;
+        });
       } else {
         $rootScope.modal = false;
       }
@@ -64,25 +66,28 @@ angular.module(config.project.name,
      */
     $rootScope.closeModal = function (e) {
       if (this.modal && (!e || e.target.parentNode.classList.contains('modal-container'))) {
-        var to = $rootScope.prevStates[$rootScope.prevStates.length - 1];
+        $rootScope.modal = false;
+        $timeout(function () {
+          var to = $rootScope.prevStates[$rootScope.prevStates.length - 1];
 
-        if (to.state.abstract) {
-          to = $state.$current;
+          if (to.state.abstract) {
+            to = $state.$current;
 
-          // Recursively try to find nearest non-abstract parent.
-          while (to.parent) {
-            if (!to.parent.self.abstract) {
-              $state.go(to.parent.self);
+            // Recursively try to find nearest non-abstract parent.
+            while (to.parent) {
+              if (!to.parent.self.abstract) {
+                $state.go(to.parent.self);
+              }
+
+              to = to.parent;
             }
 
-            to = to.parent;
+            // Move home :(
+            $location.url('/');
+          } else {
+            $state.go(to.state, to.params);
           }
-
-          // Move home :(
-          $location.url('/');
-        } else {
-          $state.go(to.state, to.params);
-        }
+        }, 400);
       }
-    }
+    };
   });
