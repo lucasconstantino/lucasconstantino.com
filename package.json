@@ -1,6 +1,7 @@
 {
   "name": "lucasconstantino.com",
   "version": "0.1.0",
+  "repository": "https://github.com/lucasconstantino/lucasconstantino.com",
   "homepage": "https://github.com/lucasconstantino/lucasconstantino.com",
   "authors": [
     "Lucas Constantino <lucas@taller.net.br>"
@@ -13,6 +14,8 @@
   "license": "GPLv2",
   "dependencies": {
     "canvas": "^1.1.6",
-    "thief": "^1.0.0"
+    "couleur": "^1.2.2",
+    "guesslanguage": "^0.2.0",
+    "walk": "^2.3.3"
   }
 }
