@@ -8,38 +8,29 @@
   +transform(scale(1))
 
 .modal-container
-  +transition(transform 0.2s, opacity 0.2s, visibility 0s 0.2s)
-  +transform(scale(0.6))
+  +transition(opacity 0.2s 0.2s, visibility 0s 0.4s)
   position: fixed
   z-index: 500
   top: 0
   right: 0
   bottom: 0
   left: 0
+  padding-top: 5rem
+  padding-bottom: 5rem
   visibility: hidden
   opacity: 0
   background-color: rgba($color-reverse-background, 0.8)
-  overflow: auto
-
-body.open-modal
   overflow: hidden
 
-  .wrapper
-    +transform(scale(0.96))
-
-  .modal-container
-    +transition(transform 0.2s, opacity 0.4s)
-    +transform(scale(1))
-    opacity: 1
-    visibility: visible
-
 .modal
+  +transition(transform 0.4s)
+  +transform(translateY(100vh))
   @extend %container
-  margin-top: 5rem
-  margin-bottom: 5rem
   padding: 0
   background-color: white
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+  backface-visibility: hidden
+  transform-style: preserve-3d
 
   .featured-section + .content-section
     .section-inner > h2
@@ -48,3 +39,18 @@ body.open-modal
   .content-section
     .section-inner
       padding: 5rem
+
+body.open-modal
+  overflow: hidden
+
+  .wrapper
+    +transform(scale(0.96))
+
+  .modal-container
+    +transition(opacity 0.4s, overflow 0s 0.4s)
+    opacity: 1
+    visibility: visible
+    overflow: auto
+
+  .modal
+    +transform(translateY(0vh))
