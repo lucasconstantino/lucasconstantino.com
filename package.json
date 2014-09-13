@@ -10,5 +10,9 @@
     "Ghost",
     "AngularJS"
   ],
-  "license": "GPLv2"
+  "license": "GPLv2",
+  "dependencies": {
+    "canvas": "^1.1.6",
+    "thief": "^1.0.0"
+  }
 }
