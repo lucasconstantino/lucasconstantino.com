@@ -16,6 +16,8 @@
     "canvas": "^1.1.6",
     "couleur": "^1.2.2",
     "guesslanguage": "^0.2.0",
+    "jquery": "^2.1.1",
+    "jsdom": "^1.0.0-pre.6",
     "walk": "^2.3.3"
   }
 }

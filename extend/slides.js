@@ -4,7 +4,11 @@
  */
 
 var https = require('https')
-  , couleur = require('couleur');
+  , request = require('request')
+  , couleur = require('couleur')
+  , jQuery = require('jquery')
+  , jsdom = require('jsdom')
+  , language = require('guesslanguage').guessLanguage;
 
 // Configuration.
 var frequency = 86400000 // daily.
@@ -76,6 +80,7 @@ function cleanDeck(deck) {
   deck.published = new Date(month + ' ' + day + ', ' + year);
 
   findDominantColor(deck);
+  findDominantLanguage(deck);
 }
 
 /**
@@ -101,6 +106,27 @@ function findDominantColor(deck) {
           }
         });
       });
+    });
+  }
+}
+
+/**
+ * Parses deck main language.
+ */
+function findDominantLanguage(deck) {
+  if (deck.url) {
+    request(deck.url, function (err, res, body) {
+      if (body) {
+        jsdom.env(body, function (err, window) {
+          if (window) {
+            language.detect(jQuery(window)('.slides').text(), function (lang) {
+              if (lang) {
+                deck.lang = lang;
+              }
+            });
+          }
+        });
+      }
     });
   }
 }
