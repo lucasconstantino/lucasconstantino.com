@@ -2,7 +2,12 @@
 <div class="slide-deck modal">
   <section class="featured-section">
     <div class="section-inner">
-      <div class="cover" style="background-color: {{deck.colorRGB}}"></div>
+      <div class="cover" style="background-color: {{deck.colorRGB}}">
+        <div class="chasing-dots">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+      </div>
       <iframe src="{{embedUrl}}" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
         ng-load="ready = true"
         ng-class="{'ready': ready}"></iframe>
