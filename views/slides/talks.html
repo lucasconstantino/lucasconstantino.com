@@ -28,11 +28,17 @@
               style="background-image: url('{{deck.image}}')"></div>
 
             <footer>
-              <span class="post-meta">
+              <span class="deck-meta">
                 <span class="deck-views"
-                  ng-if="deck.views">{{deck.views}} <i class="fa fa-eye"></i></span>
+                  ng-if="deck.views">{{deck.views}} <i class="fa fa-eye"></i>
+                </span>
                 <span class="deck-likes"
-                  ng-if="deck.likes">{{deck.likes}} <i class="fa fa-star"></i></span>
+                  ng-if="deck.likes">{{deck.likes}} <i class="fa fa-star"></i>
+                </span>
+                <span class="deck-lang"
+                  ng-if="deck.lang">
+                  <i class="flag-icon flag-icon-{{deck.lang | country}}"></i>
+                </span>
               </span>
             </footer>
           </a>

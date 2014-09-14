@@ -59,10 +59,18 @@
             <a ui-sref="talks.deck({slug: '{{deck.slug}}'})">
               <header>
                 <h4>{{deck.title}}</h4>
-                <span class="deck-views"
-                  ng-id="deck.views">{{deck.views}} <i class="fa fa-eye"></i></span>
-                <span class="deck-likes"
-                  ng-if="deck.likes">{{deck.likes}} <i class="fa fa-star"></i></span>
+                <div class="deck-meta">
+                  <span class="deck-views"
+                    ng-if="deck.views">{{deck.views}} <i class="fa fa-eye"></i>
+                  </span>
+                  <span class="deck-likes"
+                    ng-if="deck.likes">{{deck.likes}} <i class="fa fa-star"></i>
+                  </span>
+                  <span class="deck-lang"
+                    ng-if="deck.lang">
+                    <i class="flag-icon flag-icon-{{deck.lang | country}}"></i>
+                  </span>
+                </div>
               </header>
             </a>
           </article>

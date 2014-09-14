@@ -30,9 +30,15 @@
           </time>
         </span>
         <span class="deck-views"
-          ng-if="deck.views"><i class="fa fa-eye"> {{deck.views}}</i></span>
+          ng-if="deck.views"><i class="fa fa-eye"> {{deck.views}}</i>
+        </span>
         <span class="deck-likes"
-          ng-if="deck.likes"><i class="fa fa-star"> {{deck.likes}}</i></span>
+          ng-if="deck.likes"><i class="fa fa-star"> {{deck.likes}}</i>
+        </span>
+        <span class="deck-lang"
+          ng-if="deck.lang">
+          <i class="flag-icon flag-icon-{{deck.lang | country}}"></i>
+        </span>
       </div>
     </div>
   </section>
