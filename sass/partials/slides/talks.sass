@@ -8,6 +8,28 @@
     @extend %col-md-6
     margin-bottom: 1em
     text-align: center
+
+    .deck-lang i
+      +filter(saturate(0))
+      @extend %transition-navigation
+      border-radius: 1em
     
     > a
       @extend %panel-item
+
+      &:hover, &:active
+        .deck-lang i
+          +filter(saturate(1))
+
+  .deck-meta
+    > span
+      margin-right: 0.4em
+
+      i:before
+        margin-left: 0.1em
+
+      &:last-child
+        margin-right: 0
+
+    .deck-lang
+      font-size: 0.9em
