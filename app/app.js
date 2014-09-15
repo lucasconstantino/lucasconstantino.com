@@ -30,6 +30,8 @@ angular.module(config.project.name,
   // Application Start Event
   .run(function ($rootScope, $state, $stateParams, $location, $timeout) {
 
+    var $body = $('body');
+
     // Give easy access to states on all modules via rootScope.
     $rootScope.state = $state.current;
     $rootScope.stateParams = $stateParams;
@@ -47,7 +49,8 @@ angular.module(config.project.name,
       // Update state history.
       $rootScope.prevStates.push({
         state: from,
-        params: fromParams
+        params: fromParams,
+        scroll: $body.scrollTop()
       });
 
       // Handle modals.
@@ -59,7 +62,7 @@ angular.module(config.project.name,
       } else {
         $rootScope.modal = false;
       }
-    });    
+    });
 
     /**
      * Closes any opened modal.
@@ -87,7 +90,15 @@ angular.module(config.project.name,
           } else {
             $state.go(to.state, to.params);
           }
+
+          setTimeout(function () {
+            $body.scrollTop(to.scroll || 0);
+          }, 10);
         }, 400);
       }
     };
+
+    $timeout(function () {
+      $rootScope.ready = true;
+    });
   });
