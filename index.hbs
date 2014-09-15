@@ -24,65 +24,71 @@
 
   {{ghost_head}}
 </head>
-<body class="{{body_class}}" ng-class="{'open-modal': modal}">
-  <div class="wrapper">
-    <header id="site-head">
-      <div id="site-head-inner">
-        <h1 id="blog-profile">
-          <a id="blog-title" ui-sref="home">
-            <img src="http://www.gravatar.com/avatar/1cda89f1fbe853160953a0bb5aabe5f5?s=80" alt="Lucas">
-            <span>Lucas Constantino Silva</span>
-          </a>
+<body class="{{body_class}}"
+  ng-class="{
+    'open-modal': modal,
+    'home': state.name == 'home'
+  }">
+  <header id="site-head">
+    <div id="site-head-inner">
+      <h1 id="blog-profile">
+        <a id="blog-title"
+          ui-sref="home"
+          ng-class="{ 'ready': ready }">
+          <img src="http://www.gravatar.com/avatar/1cda89f1fbe853160953a0bb5aabe5f5?s=80" alt="Lucas">
+          <span>Lucas Constantino Silva</span>
+        </a>
 
-          <ul id="social-links">
-            <li><a href="//taller.net.br/#fourth" class="fa fa-taller"></a></li>
-            <li><a href="//github.com/lucasconstantino" class="fa fa-github"></a></li>
-            <li><a href="//twitter.com/luconsilva" class="fa fa-twitter"></a></li>
-            <li><a href="//www.facebook.com/lucasconstantino" class="fa fa-facebook-square"></a></li>
-            <li><a href="//plus.google.com/+LucasConstantinoSilva" class="fa fa-google-plus-square"></a></li>
-          </ul>
-        </h1>
-
-        <ul id="site-navigation">
-          <li>
-            <a ui-sref="blog">
-              <span data-hover="Blog">Blog</span>
-            </a>
-          </li>
-          <li>
-            <a ui-sref="talks">
-              <span data-hover="Talks">Talks</span>
-            </a>
-          </li>
-          <li class="disabled">
-            <a ui-sref="projects">
-              <span data-hover="Projects">Projects</span>
-            </a>
-          </li>
-          <li class="disabled">
-            <a ui-sref="ask">
-              <span data-hover="Ask a Question">Ask a Question</span>
-            </a>
-          </li>
-          <li class="disabled">
-            <a ui-sref="about">
-              <span data-hover="About">About</span>
-            </a>
-          </li>
-          <li>
-            <a ui-sref="home">
-              <span>
-                <i class="fa fa-home"></i>
-              </span>
-            </a>
-          </li>
+        <ul id="social-links">
+          <li><a href="//taller.net.br/#fourth" class="fa fa-taller"></a></li>
+          <li><a href="//github.com/lucasconstantino" class="fa fa-github"></a></li>
+          <li><a href="//twitter.com/luconsilva" class="fa fa-twitter"></a></li>
+          <li><a href="//www.facebook.com/lucasconstantino" class="fa fa-facebook-square"></a></li>
+          <li><a href="//plus.google.com/+LucasConstantinoSilva" class="fa fa-google-plus-square"></a></li>
         </ul>
-      </div>
+      </h1>
 
-      {{! The next line is an example of how to output the cover image that can be set in the Ghost admin area. Uncomment the line if you wish to use it. }}
-      {{!-- {{#if @blog.cover}}<img src="{{@blog.cover}}" alt="Blog Cover" />{{/if}} --}}
-    </header>
+      <ul id="site-navigation">
+        <li>
+          <a ui-sref="blog">
+            <span data-hover="Blog">Blog</span>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="talks">
+            <span data-hover="Talks">Talks</span>
+          </a>
+        </li>
+        <li class="disabled">
+          <a ui-sref="projects">
+            <span data-hover="Projects">Projects</span>
+          </a>
+        </li>
+        <li class="disabled">
+          <a ui-sref="ask">
+            <span data-hover="Ask a Question">Ask a Question</span>
+          </a>
+        </li>
+        <li class="disabled">
+          <a ui-sref="about">
+            <span data-hover="About">About</span>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="home">
+            <span>
+              <i class="fa fa-home"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
 
+    {{! The next line is an example of how to output the cover image that can be set in the Ghost admin area. Uncomment the line if you wish to use it. }}
+    {{!-- {{#if @blog.cover}}<img src="{{@blog.cover}}" alt="Blog Cover" />{{/if}} --}}
+  </header>
+
+  <div class="wrapper">
     <!-- Main App view -->
     <main id="site-content"
       ui-view></main>
@@ -149,6 +155,9 @@
   {{app "directives.js"}}
   {{app "router.js"}}
   {{app "init.js"}}
+
+  {{! Asset Scripts}}
+  {{include "scripts/header.js"}}
 
 </body>
 </html>
