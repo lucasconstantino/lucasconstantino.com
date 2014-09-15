@@ -23,7 +23,7 @@ angular.module('slides')
         resolve: {
           deck: function ($stateParams, decks) {
             return decks.filter(function (deck) {
-              return deck.slug == $stateParams.slug;
+              return deck.slug === $stateParams.slug;
             })[0] || {};
           }
         },
@@ -34,5 +34,5 @@ angular.module('slides')
             templateUrl: 'views/slides/deck.html'
           }
         }
-      })
+      });
   });
