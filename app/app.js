@@ -18,6 +18,7 @@ angular.module(config.project.name,
   , 'duScroll'
   , 'konami'
   , 'ngDisqus'
+  , 'pascalprecht.translate'
 
   // Sub-modules
   , 'blog'

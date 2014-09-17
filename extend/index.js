@@ -12,7 +12,8 @@ var rootPath  = '../../../../'
   , walk      = require('walk')
   , project   = require('../package.json')
   , themePath = path.normalize(__dirname + '/../')
-  , slides    = require('./slides');
+  , slides    = require('./slides')
+  , i18n      = require('./i18n');
 
 // Templates.
 var hbsTag = hbs.compile(fs.readFileSync(__dirname + '/templates/tag.hbs', 'utf8'));
@@ -54,13 +55,14 @@ hbs.registerHelper('config', function (context) {
     config.blog = context.data.blog;
   }
 
-  // Join project information.
+  // Join other information.
   _.assign(config, {
     project: project
   , slides: {
       decks: slides.getDecks()
     , user: slides.getUser()
     }
+  , i18n: i18n
   });
 
   return safeString(JSON.stringify(config));

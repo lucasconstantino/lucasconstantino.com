@@ -7,6 +7,9 @@
  * we load all our modules and their dependencies.
  */
 
+// Stop AngularJS from bootstraping.
+window.name = 'NG_DEFER_BOOTSTRAP!';
+
 angular.element().ready(function() {
   angular.bootstrap(document, [config.project.name])
 });
