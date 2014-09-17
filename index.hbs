@@ -117,7 +117,6 @@
 
   {{! Applicationg configuration }}
   <script>var config = {{config}};</script>
-  {{app "config.js"}}
 
 
   {{! Vendor components }}
@@ -133,8 +132,9 @@
   {{component "angular-scroll/angular-scroll.js"}}
   {{component "angular-konami/angular-konami.js"}}
   {{component "angular-disqus/angular-disqus.js"}}
+  {{component "angular-translate/angular-translate.js"}}
 
-  
+
   {{! Application modules }}
   {{app "blog/module.js"}}
   {{app "blog/router.js"}}
@@ -154,6 +154,7 @@
   {{app "filters.js"}}
   {{app "directives.js"}}
   {{app "router.js"}}
+  {{app "config.js"}}
   {{app "init.js"}}
 
   {{! Asset Scripts}}
