@@ -10,18 +10,11 @@ angular.module(config.project.name)
   
   // Routing Configuration
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
-    
-    // Use HTML5 urls.
-    $locationProvider.html5Mode(true);
-    // $locationProvider.hashPrefix('!');
 
-    // Make Blog the default route.
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
 
-    // Configure states.
     $stateProvider
-
-      // Define blog state.
       .state('home', {
         url: '/',
         templateUrl: 'views/home.html',
