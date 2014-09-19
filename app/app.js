@@ -69,7 +69,11 @@ angular.module(config.project.name,
      * Closes any opened modal.
      */
     $rootScope.closeModal = function (e) {
-      if (this.modal && (!e || e.target.parentNode.classList.contains('modal-container'))) {
+
+      var isModalContainer = e && e.target.classList.contains('modal-container')
+        , isModal = e && e.target.parentNode.classList.contains('modal-container');
+
+      if (this.modal && (isModalContainer || isModal)) {
         $rootScope.modal = false;
         $timeout(function () {
           var to = $rootScope.prevStates[$rootScope.prevStates.length - 1];
