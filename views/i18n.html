@@ -1,0 +1,19 @@
+
+<div class="i18n-languages modal">
+  <header class="header-section">
+    <div class="section-inner">
+      <h1 class="page-title">{{'I18N.SETTINGS' | translate}} <i class="fa fa-language"></i></h1>
+    </div>
+    <div class="section-inner">
+      <ul class="languages">
+        <li ng-repeat="(code, language) in languages" class="language">
+          <a
+            ng-click="setLanguage(code)"
+            ng-class="{'active': selected == code}">
+            <h3><i class="flag-icon flag-icon-{{language.flag}}"></i> {{language.language}}</h3>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+</div>
