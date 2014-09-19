@@ -1,10 +1,19 @@
 {
   "language": "English",
+  "flag": "gb",
   "phrases": {
-    "GREETINGS": "Lucas Constantino Silva is a developer and kind of a web designer. He has knowledge on all major languages of the web, such as HTML, CSS (with a drop of Sass), PHP and lovely JavaScript. He works at <a href=\"https://taller.net.br/\">Taller</a>, a great company with <s>nice</s> awesome people.",
-    "LOVE": "He definitely <i class=\"fa fa-heart love\"></i> his girlfriend.",
+    "HOME": {
+      "ABOUT": "Lucas Constantino Silva is a developer and kind of a web designer. He has knowledge on all major languages of the web, such as HTML, CSS (with a drop of Sass), PHP and lovely JavaScript. He works at <a href=\"https://taller.net.br/\">Taller</a>, a great company with <s>nice</s> awesome people.",
+      "LOVE": "He definitely <i class=\"fa fa-heart love\"></i> his girlfriend."
+    },
 
-    "TALKS": "Talks",
+    "SECTION": {
+      "TALKS": "Talks"
+    },
+
+    "I18N": {
+      "SETTINGS": "Language Settings"
+    },
 
     "POWERED_BY": "Powered by"
   }
