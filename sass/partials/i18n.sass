@@ -1,0 +1,45 @@
+/*------------------------------------------------------------------------------
+ * i18n Language Modal.
+ *------------------------------------------------------------------------------
+ */
+
+.i18n-languages
+  @extend %theme-sun-flower
+
+  .section-inner:first-child
+    background-color: white
+    color: $color-sun-flower
+
+    h1 .fa
+      float: right
+      margin-right: 0.2em
+
+  .language
+    @extend %col-md-6
+
+  .language > a
+    @extend %panel-item
+    margin-bottom: 1em
+    cursor: pointer
+
+    .flag-icon
+      font-size: 1.4em
+      vertical-align: middle
+      margin-right: 0.3em
+      margin-top: -0.2em
+
+    h3:before
+      +transition(opacity 250ms, right 250ms)
+      content: "\f00c"
+      font-family: FontAwesome
+      float: right
+      font-size: 1.4em
+      opacity: 0
+      visibility: hidden
+      position: relative
+      right: -1em
+
+    &.active h3:before
+      visibility: visible
+      opacity: 1
+      right: 0
