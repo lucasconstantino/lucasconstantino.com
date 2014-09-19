@@ -18,6 +18,17 @@ angular.module(config.project.name)
       .state('home', {
         url: '/',
         templateUrl: 'views/home.html',
+      })
+
+      .state('home.language', {
+        url: '/language',
+        modal: true,
+        views: {
+          'modal@': {
+            controller: 'LanguageController',
+            templateUrl: 'views/i18n.html',
+          }
+        }
       });
 
     // Register the interceptor.
