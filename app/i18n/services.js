@@ -1,10 +1,10 @@
 /**
  * ------------------------------------------------------------------------
- * Application i18n Configuration
+ * i18n Module Services
  * ------------------------------------------------------------------------
  */
 
-angular.module(config.project.name)
+angular.module('i18n')
 
   // Read translatable strings and register them for Angular.
   .provider('i18n', function ($translateProvider) {
@@ -33,30 +33,26 @@ angular.module(config.project.name)
         i18n.current = $translate.use();
       });
 
+      /**
+       * Verify if languages as relative.
+       */
+      i18n.relative = function (fromLanguage, toLanguage) {
+        return fromLanguage.replace(/-.*/, '') === toLanguage.replace(/-.*/, '');
+      };
+
+      /**
+       * Verify if language matches a set.
+       */
+      i18n.matches = function (language, languages, ease) {
+        ease = ease || false;
+        languages = languages || [i18n.current];
+
+        return languages.filter(function (filterLanguage) {
+          return language === filterLanguage || (ease && i18n.relative(language, filterLanguage));
+        }) > -1;
+      };
+
       // Return factory.
       return i18n;
-    };
-  })
-
-  .config(function ($stateProvider) {
-    $stateProvider.state('home.language', {
-      url: '/language',
-      modal: true,
-      views: {
-        'modal@': {
-          controller: 'LanguageController',
-          templateUrl: 'views/i18n.html',
-        }
-      }
-    });
-  })
-
-  .controller('LanguageController', function ($scope, $translate, i18n) {
-    $scope.selected = $translate.use();
-    $scope.languages = i18n.languages;
-
-    $scope.setLanguage = function (code) {
-      $scope.selected = code;
-      $translate.use(code);
     };
   });
