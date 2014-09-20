@@ -21,7 +21,7 @@ angular.module(config.project.name)
       })
 
       .state('home.language', {
-        url: '/language',
+        url: 'language',
         modal: true,
         views: {
           'modal@': {
