@@ -1,21 +1,29 @@
 {
-  "language": "Português",
+  "name": "Português",
   "flag": "br",
   "phrases": {
+    "I18N": {
+      "SETTINGS": "Opções de Idioma",
+      "SHOW_ALL": "Exibir conteúdo em todas as linguas",
+      "FILTERED_TEXT": "Exibindo apenas resultados em {{language}}"
+    },
+
     "HOME": {
       "ABOUT": "Lucas Constantino Silva é um desenvolvedor e quase web designer. Ele manja das principais linguagens da web, como HTML, CSS com Sass, PHP, e o seu xodó, o JavaScript. Ele sempre trabalhou na <a href=\"https://taller.net.br/\">Taller</a>, uma baita empresa com uns caras supimpas pra caralho.",
       "LOVE": "Ah, e ele <i class=\"fa fa-heart love\"></i> sua namorada."
     },
     
-    "SECTION": {
-      "TALKS": "Falas"
+    "SECTIONS": {
+      "TALKS": {
+        "NAME": "Slides e Talks",
+        "SHORT_NAME": "Slides"
+      },
+      "BLOG": {
+        "NAME": "Posts e Notícias",
+        "SHORT_NAME": "Blog"
+      }
     },
 
-    "I18N": {
-      "SETTINGS": "Opções de Idioma",
-      "SHOW_ALL": "Exibir conteúdo em todas as linguas"
-    },
-
-    "POWERED_BY": "Provido por"
+    "POWERED_BY": "Feito usando"
   }
 }

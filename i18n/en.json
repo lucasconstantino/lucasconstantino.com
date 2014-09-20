@@ -1,19 +1,27 @@
 {
-  "language": "English",
+  "name": "English",
   "flag": "gb",
   "phrases": {
+    "I18N": {
+      "SETTINGS": "Language Settings",
+      "SHOW_ALL": "Show content on any language",
+      "FILTERED_TEXT": "Showing only results in {{language}}"
+    },
+
     "HOME": {
       "ABOUT": "Lucas Constantino Silva is a developer and kind of a web designer. He has knowledge on all major languages of the web, such as HTML, CSS (with a drop of Sass), PHP and lovely JavaScript. He works at <a href=\"https://taller.net.br/\">Taller</a>, a great company with <s>nice</s> awesome people.",
       "LOVE": "He definitely <i class=\"fa fa-heart love\"></i> his girlfriend."
     },
 
-    "SECTION": {
-      "TALKS": "Talks"
-    },
-
-    "I18N": {
-      "SETTINGS": "Language Settings",
-      "SHOW_ALL": "Show content on any language"
+    "SECTIONS": {
+      "TALKS": {
+        "NAME": "Talking Decks",
+        "SHORT_NAME": "Talks"
+      },
+      "BLOG": {
+        "NAME": "Blog Posts",
+        "SHORT_NAME": "Blog"
+      }
     },
 
     "POWERED_BY": "Powered by"
