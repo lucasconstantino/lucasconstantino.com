@@ -4,4 +4,4 @@
  * ------------------------------------------------------------------------
  */
 
-angular.module('i18n', ['pascalprecht.translate']);
+angular.module('i18n', ['pascalprecht.translate', 'ngCookies']);

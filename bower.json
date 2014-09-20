@@ -33,6 +33,7 @@
     "angular-konami": "*",
     "angular-disqus": "~1.1.0",
     "flag-icon-css": "~0.6.3",
-    "angular-translate": "~2.3.0"
+    "angular-translate": "~2.3.0",
+    "angular-cookies": "~1.2.25"
   }
 }
