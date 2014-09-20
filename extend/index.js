@@ -10,7 +10,8 @@ var rootPath  = '../../../../'
   , fs        = require('fs')
   , _         = require('lodash')
   , walk      = require('walk')
-  , project   = require('../package.json')
+  , package   = require('../package.json')
+  , bowerJSON = require('../bower.json')
   , themePath = path.normalize(__dirname + '/../')
   , slides    = require('./slides')
   , i18n      = require('./i18n');
@@ -57,7 +58,9 @@ hbs.registerHelper('config', function (context) {
 
   // Join other information.
   _.assign(config, {
-    project: project
+    project: package
+  , 'package.json': package
+  , 'bower.json': bowerJSON
   , slides: {
       decks: slides.getDecks()
     , user: slides.getUser()
