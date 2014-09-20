@@ -11,7 +11,7 @@ angular.module('i18n')
    */
   .filter('language', function (i18n) {
     return function (array, languages, attr) {
-      if (!angular.isArray(array)) return array;
+      if (!angular.isArray(array) || !i18n.filter) return array;
 
       attr = attr || 'language';
       languages = languages || i18n.current;

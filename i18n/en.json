@@ -12,7 +12,8 @@
     },
 
     "I18N": {
-      "SETTINGS": "Language Settings"
+      "SETTINGS": "Language Settings",
+      "SHOW_ALL": "Show content on any language"
     },
 
     "POWERED_BY": "Powered by"

@@ -12,7 +12,8 @@
     },
 
     "I18N": {
-      "SETTINGS": "Opções de Idioma"
+      "SETTINGS": "Opções de Idioma",
+      "SHOW_ALL": "Exibir conteúdo em todas as linguas"
     },
 
     "POWERED_BY": "Provido por"

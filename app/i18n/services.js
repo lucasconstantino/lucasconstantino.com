@@ -26,6 +26,7 @@ angular.module('i18n')
       // Prepare factory.
       var i18n = {
         current: $translate.use(),
+        filter: true,
         languages: translations
       };
 
@@ -47,9 +48,9 @@ angular.module('i18n')
         ease = ease || false;
         languages = languages || [i18n.current];
 
-        return languages.filter(function (filterLanguage) {
+        return !!languages.filter(function (filterLanguage) {
           return language === filterLanguage || (ease && i18n.relative(language, filterLanguage));
-        }).length > -1;
+        }).length;
       };
 
       // Return factory.
