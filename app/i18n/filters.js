@@ -14,7 +14,7 @@ angular.module('i18n')
       if (!angular.isArray(array) || !i18n.filter) return array;
 
       attr = attr || 'language';
-      languages = languages || i18n.current;
+      languages = languages || i18n.current.code;
 
       // Arrays are more useful for this.
       if (!angular.isArray(languages)) languages = [languages];
