@@ -12,12 +12,14 @@ angular.module(config.project.name)
   .filter('country', function () {
 
     var map = {
-      'pt': 'br'
-    , 'es': 'es'
-    , 'en': 'gb'
+      'pt'    : 'br'
+    , 'pt-BR' : 'br'
+    , 'es'    : 'es'
+    , 'en'    : 'gb'
+    , 'en-US' : 'gb'
     };
 
-    return function (lang) {
-      return map[lang] || null;
+    return function (language) {
+      return map[language] || null;
     };
   });
