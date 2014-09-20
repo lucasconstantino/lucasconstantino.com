@@ -26,61 +26,28 @@ var frequency = 86400000 // daily.
       path: '/' + apiPath + '/' + apiId + '?' + Object.keys(query).map(function (key) {
         return key.toLowerCase() + '=' + query[key];
       }).join('&')
-    }
+    };
 
 
 /**
- * Update decks data.
+ * Parses deck main language.
  */
-function update() {
-  https.request(options, function (response) {
-    var data = ''
-      , parsed;
-
-    // Listen for chunks of data.
-    response.on('data', function (chunk) {
-      data += chunk;
+function findDominantLanguage(deck) {
+  if (deck.url) {
+    request(deck.url, function (err, res, body) {
+      if (body) {
+        jsdom.env(body, function (err, window) {
+          if (window) {
+            guessLanguage.detect(jQuery(window)('.slides').text(), function (language) {
+              if (language) {
+                deck.language = language;
+              }
+            });
+          }
+        });
+      }
     });
-
-    // Listen for response end.
-    response.on('end', function () {
-      parsed = JSON.parse(data);
-      decks  = parsed && parsed.results && parsed.results.decks || [];
-      user   = parsed && parsed.results && parsed.results.user && parsed.results.user[0] || {};
-
-      // Clean deck data.
-      decks.forEach(cleanDeck);
-
-      // Schedule next update.
-      setTimeout(update, frequency);
-    });
-  }).end();
-}
-
-/**
- * Clean deck data.
- */
-function cleanDeck(deck) {
-
-  // Keep only url.
-  deck.image = deck.image.replace('background-image: url(', '').replace(')', '');
-
-  // Parse number values.
-  deck.likes = parseInt(0 + deck.likes);
-  deck.views = parseInt(0 + deck.views);
-
-  // Parse publishing data.
-  var publishedRegex = /Published ([a-zA-z]{3}) ([0-9]{1,2}).*?, ([0-9]*)$/;
-  var publishedSplit = deck.published.match(publishedRegex);
-
-  var month = publishedSplit[1];
-  var day   = publishedSplit[2];
-  var year  = publishedSplit[3];
-
-  deck.published = new Date(month + ' ' + day + ', ' + year);
-
-  findDominantColor(deck);
-  findDominantLanguage(deck);
+  }
 }
 
 /**
@@ -111,24 +78,57 @@ function findDominantColor(deck) {
 }
 
 /**
- * Parses deck main language.
+ * Clean deck data.
  */
-function findDominantLanguage(deck) {
-  if (deck.url) {
-    request(deck.url, function (err, res, body) {
-      if (body) {
-        jsdom.env(body, function (err, window) {
-          if (window) {
-            guessLanguage.detect(jQuery(window)('.slides').text(), function (language) {
-              if (language) {
-                deck.language = language;
-              }
-            });
-          }
-        });
-      }
+function cleanDeck(deck) {
+
+  // Keep only url.
+  deck.image = deck.image.replace('background-image: url(', '').replace(')', '');
+
+  // Parse number values.
+  deck.likes = parseInt(0 + deck.likes);
+  deck.views = parseInt(0 + deck.views);
+
+  // Parse publishing data.
+  var publishedRegex = /Published ([a-zA-z]{3}) ([0-9]{1,2}).*?, ([0-9]*)$/;
+  var publishedSplit = deck.published.match(publishedRegex);
+
+  var month = publishedSplit[1];
+  var day   = publishedSplit[2];
+  var year  = publishedSplit[3];
+
+  deck.published = new Date(month + ' ' + day + ', ' + year);
+
+  findDominantColor(deck);
+  findDominantLanguage(deck);
+}
+
+/**
+ * Update decks data.
+ */
+function update() {
+  https.request(options, function (response) {
+    var data = ''
+      , parsed;
+
+    // Listen for chunks of data.
+    response.on('data', function (chunk) {
+      data += chunk;
     });
-  }
+
+    // Listen for response end.
+    response.on('end', function () {
+      parsed = JSON.parse(data);
+      decks  = parsed && parsed.results && parsed.results.decks || [];
+      user   = parsed && parsed.results && parsed.results.user && parsed.results.user[0] || {};
+
+      // Clean deck data.
+      decks.forEach(cleanDeck);
+
+      // Schedule next update.
+      setTimeout(update, frequency);
+    });
+  }).end();
 }
 
 // First time request.
