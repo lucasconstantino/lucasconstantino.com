@@ -37,7 +37,7 @@ angular.module('i18n')
        * Verify if languages as relative.
        */
       i18n.relative = function (fromLanguage, toLanguage) {
-        return fromLanguage.replace(/-.*/, '') === toLanguage.replace(/-.*/, '');
+        return fromLanguage.replace(/[_-].*/, '') === toLanguage.replace(/[_-].*/, '');
       };
 
       /**
@@ -49,7 +49,7 @@ angular.module('i18n')
 
         return languages.filter(function (filterLanguage) {
           return language === filterLanguage || (ease && i18n.relative(language, filterLanguage));
-        }) > -1;
+        }).length > -1;
       };
 
       // Return factory.

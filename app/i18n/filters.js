@@ -20,9 +20,7 @@ angular.module('i18n')
       if (!angular.isArray(languages)) languages = [languages];
 
       return array.filter(function (obj) {
-        return !obj[attr] || languages.filter(function (language) {
-          return i18n.matches(obj[attr], language, true);
-        }) > -1;
+        return !obj[attr] || i18n.matches(obj[attr], languages, true);
       });
     };
   });
