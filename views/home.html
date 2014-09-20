@@ -24,7 +24,7 @@
 
         <div class="article-list post-list">
           <article class="post"
-            ng-repeat="post in posts | limitTo:6">
+            ng-repeat="post in posts | language | limitTo:6">
             <a ui-sref="blog.post({slug: '{{post.slug}}'})">
               <header>
                 <h4>{{post.title}}</h4>
@@ -67,8 +67,8 @@
                     ng-if="deck.likes">{{deck.likes}} <i class="fa fa-star"></i>
                   </span>
                   <span class="deck-lang"
-                    ng-if="deck.lang">
-                    <i class="flag-icon flag-icon-{{deck.lang | country}}"></i>
+                    ng-if="deck.language">
+                    <i class="flag-icon flag-icon-{{deck.language | country}}"></i>
                   </span>
                 </div>
               </header>
