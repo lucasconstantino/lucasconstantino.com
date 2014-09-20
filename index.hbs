@@ -112,7 +112,7 @@
         <div class="section-inner">
           <a href="{{@blog.url}}/rss/"><i class="fa fa-rss"></i> Subscribe!</a>
           <section>All content copyright <a href="/">{{@blog.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
-          <section>Proudly published with <a href="http://ghost.org">Ghost</a> and a bunch of <a ui-sref="dependencies">other tools</a>.</section>
+          <section>Proudly published with <a href="http://ghost.org">Ghost</a> and a bunch of <a ui-sref="development">other tools</a>.</section>
         </div>
       </div>
     </footer>
@@ -165,9 +165,14 @@
   {{app "slides/controllers.js"}}
 
   {{app "i18n/module.js"}}
-  {{app "i18n/controllers.js"}}
   {{app "i18n/services.js"}}
+  {{app "i18n/controllers.js"}}
   {{app "i18n/filters.js"}}
+
+  {{app "development/module.js"}}
+  {{app "development/services.js"}}
+  {{app "development/controllers.js"}}
+  {{app "development/router.js"}}
 
 
   {{! Application }}

@@ -23,6 +23,7 @@ angular.module(config.project.name,
   , 'i18n'
   , 'blog'
   , 'slides'
+  , 'development'
   ])
 
   // Application Constants
