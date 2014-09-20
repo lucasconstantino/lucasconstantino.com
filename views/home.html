@@ -55,7 +55,7 @@
 
         <div class="article-list deck-list">
           <article class="deck"
-            ng-repeat="deck in decks | limitTo:4">
+            ng-repeat="deck in decks | language | limitTo:4">
             <a ui-sref="talks.deck({slug: '{{deck.slug}}'})">
               <header>
                 <h4>{{deck.title}}</h4>
