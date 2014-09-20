@@ -34,6 +34,7 @@
       <h1 id="blog-profile">
         <a id="blog-title"
           ui-sref="home"
+          ui-sref-opts="{reload: true}"
           ng-class="{ 'ready': ready }">
           <img src="http://www.gravatar.com/avatar/1cda89f1fbe853160953a0bb5aabe5f5?s=80" alt="Lucas">
           <span>Lucas Constantino Silva</span>
@@ -49,14 +50,20 @@
       </h1>
 
       <ul id="site-navigation">
-        <li>
+        <li data-title="\{{'SECTIONS.BLOG.NAME' | translate}}">
           <a ui-sref="blog">
-            <span data-hover="Blog">Blog</span>
+            <span
+              data-hover="\{{'SECTIONS.BLOG.SHORT_NAME' | translate}}">
+              \{{'SECTIONS.BLOG.SHORT_NAME' | translate}}
+            </span>
           </a>
         </li>
-        <li>
+        <li data-title="\{{'SECTIONS.TALKS.NAME' | translate}}">
           <a ui-sref="talks">
-            <span data-hover="Talks">Talks</span>
+            <span
+              data-hover="\{{'SECTIONS.TALKS.SHORT_NAME' | translate}}">
+              \{{'SECTIONS.TALKS.SHORT_NAME' | translate}}
+            </span>
           </a>
         </li>
         <li class="disabled">
@@ -74,14 +81,14 @@
             <span data-hover="About">About</span>
           </a>
         </li>
-        <li>
+        <li data-title="\{{'I18N.SETTINGS' | translate}}">
           <a ui-sref="home.language">
             <span>
               <i class="fa fa-language"></i>
             </span>
           </a>
         </li>
-        <li>
+        <li class="disabled">
           <a ui-sref="home">
             <span>
               <i class="fa fa-home"></i>
