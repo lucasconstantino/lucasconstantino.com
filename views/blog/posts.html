@@ -11,7 +11,7 @@
 
       <div class="article-list post-list">
         <article class="post"
-          ng-repeat="post in posts">
+          ng-repeat="post in posts | language">
           <a ui-sref="blog.post({slug: '{{post.slug}}'})">
             <header>
               <h2>{{post.title}}</h2>
@@ -32,6 +32,13 @@
             </footer>
           </a>
         </article>
+        <p class="only-language-results">
+          <a
+            ng-if="posts.length > (posts | language).length"
+            ui-sref="home.language"
+            translate
+            translate-values="{language: language.name}">I18N.FILTERED_TEXT</a>
+        </p>
       </div>
     </div>
   </section>

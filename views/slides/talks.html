@@ -11,7 +11,7 @@
 
       <div class="article-list deck-list">
         <article class="deck"
-          ng-repeat="deck in decks">
+          ng-repeat="deck in decks | language">
           <a ui-sref="talks.deck({slug: '{{deck.slug}}'})">
             <header>
               <h2>{{deck.title}}</h2>
@@ -43,6 +43,13 @@
             </footer>
           </a>
         </article>
+        <p class="only-language-results">
+          <a
+            ng-if="decks.length > (decks | language).length"
+            ui-sref="home.language"
+            translate
+            translate-values="{language: language.name}">I18N.FILTERED_TEXT</a>
+        </p>
       </div>
     </div>
   </section>
