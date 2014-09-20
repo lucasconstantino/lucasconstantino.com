@@ -17,7 +17,8 @@
   .language
     @extend %col-md-6
 
-  .language > a
+  .language > a,
+  .filter-languages > a
     @extend %panel-item
     margin-bottom: 1em
     cursor: pointer
@@ -43,3 +44,6 @@
       visibility: visible
       opacity: 1
       right: 0
+
+  .filter-languages
+    @extend %col-md-12
