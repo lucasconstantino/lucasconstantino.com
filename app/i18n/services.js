@@ -25,7 +25,7 @@ angular.module('i18n')
 
       // Prepare factory.
       var i18n = {
-        filter: true,
+        filter: $cookies.languageFilter === 'false' ? false : true,
         languages: translations
       };
 
