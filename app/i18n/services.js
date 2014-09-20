@@ -9,17 +9,17 @@ angular.module('i18n')
   // Read translatable strings and register them for Angular.
   .provider('i18n', function ($translateProvider) {
 
-    var userLang = (navigator.language || navigator.userLanguage)
+    var userLanguage = (navigator.language || navigator.userLanguage)
       , translations = config.i18n || {};
 
-    userLang = !translations[userLang] ? 'en' : userLang;
+    userLanguage = !translations[userLanguage] ? 'en' : userLanguage;
 
     // Register translations.
     Object.keys(translations).forEach(function (lang) {
       $translateProvider.translations(lang, translations[lang].phrases);
     });
 
-    $translateProvider.preferredLanguage(userLang);
+    $translateProvider.preferredLanguage(userLanguage);
 
     this.$get = function ($rootScope, $translate) {
 
