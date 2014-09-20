@@ -8,7 +8,7 @@ var https = require('https')
   , couleur = require('couleur')
   , jQuery = require('jquery')
   , jsdom = require('jsdom')
-  , language = require('guesslanguage').guessLanguage;
+  , guessLanguage = require('guesslanguage').guessLanguage;
 
 // Configuration.
 var frequency = 86400000 // daily.
@@ -119,9 +119,9 @@ function findDominantLanguage(deck) {
       if (body) {
         jsdom.env(body, function (err, window) {
           if (window) {
-            language.detect(jQuery(window)('.slides').text(), function (lang) {
-              if (lang) {
-                deck.lang = lang;
+            guessLanguage.detect(jQuery(window)('.slides').text(), function (language) {
+              if (language) {
+                deck.language = language;
               }
             });
           }
