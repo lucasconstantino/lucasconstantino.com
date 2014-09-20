@@ -19,9 +19,9 @@ angular.module('i18n')
       $translateProvider.translations(lang, translations[lang].phrases);
     });
 
-    $translateProvider.preferredLanguage(userLanguage);
+    this.$get = function ($rootScope, $cookies, $translate) {
 
-    this.$get = function ($rootScope, $translate) {
+      userLanguage = translations[$cookies.language] && $cookies.language || userLanguage;
 
       // Prepare factory.
       var i18n = {
@@ -34,12 +34,10 @@ angular.module('i18n')
        * @return {[type]} [description]
        */
       function resetLanguage() {
-        i18n.current = translations[$translate.use()] || translations['en'] || translations[0];
+        i18n.current = translations[$translate.use()] || translations.en || translations[0];
         $rootScope.language = i18n.current;
+        $cookies.language = i18n.current.code;
       }
-
-      resetLanguage();
-      $rootScope.$on('$translateChangeEnd', resetLanguage);
 
       /**
        * Verify if languages as relative.
@@ -59,6 +57,12 @@ angular.module('i18n')
           return language === filterLanguage || (ease && i18n.relative(language, filterLanguage));
         }).length;
       };
+
+      $translate.use(userLanguage);
+      $translate.preferredLanguage(userLanguage);
+
+      resetLanguage();
+      $rootScope.$on('$translateChangeEnd', resetLanguage);
 
       // Return factory.
       return i18n;
