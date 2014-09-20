@@ -25,14 +25,21 @@ angular.module('i18n')
 
       // Prepare factory.
       var i18n = {
-        current: $translate.use(),
         filter: true,
         languages: translations
       };
 
-      $rootScope.$on('$translateChangeEnd', function () {
-        i18n.current = $translate.use();
-      });
+      /**
+       * Reset current language status.
+       * @return {[type]} [description]
+       */
+      function resetLanguage() {
+        i18n.current = translations[$translate.use()] || translations['en'] || translations[0];
+        $rootScope.language = i18n.current;
+      }
+
+      resetLanguage();
+      $rootScope.$on('$translateChangeEnd', resetLanguage);
 
       /**
        * Verify if languages as relative.
@@ -46,7 +53,7 @@ angular.module('i18n')
        */
       i18n.matches = function (language, languages, ease) {
         ease = ease || false;
-        languages = languages || [i18n.current];
+        languages = languages || [i18n.current.code];
 
         return !!languages.filter(function (filterLanguage) {
           return language === filterLanguage || (ease && i18n.relative(language, filterLanguage));
