@@ -13,6 +13,7 @@
   ],
   "license": "GPLv2",
   "dependencies": {
+    "async": "^0.9.0",
     "canvas": "^1.1.6",
     "couleur": "^1.2.2",
     "guesslanguage": "^0.2.0",
