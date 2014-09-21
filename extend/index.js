@@ -11,10 +11,23 @@ var rootPath  = '../../../../'
   , _         = require('lodash')
   , walk      = require('walk')
   , package   = require('../package.json')
-  , bowerJSON = require('../bower.json')
   , themePath = path.normalize(__dirname + '/../')
   , slides    = require('./slides')
-  , i18n      = require('./i18n');
+  , i18n      = require('./i18n')
+  , dependencyLoader = require('./dependencies.js');
+
+var dependencies = {
+  bower: {}
+, node: {}
+};
+
+dependencyLoader.bower(function (results) {
+  dependencies.bower = results;
+});
+
+dependencyLoader.node(function (results) {
+  dependencies.node = results;
+});
 
 // Templates.
 var hbsTag = hbs.compile(fs.readFileSync(__dirname + '/templates/tag.hbs', 'utf8'));
@@ -59,8 +72,7 @@ hbs.registerHelper('config', function (context) {
   // Join other information.
   _.assign(config, {
     project: package
-  , 'package.json': package
-  , 'bower.json': bowerJSON
+  , dependencies: dependencies
   , slides: {
       decks: slides.getDecks()
     , user: slides.getUser()
