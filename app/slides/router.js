@@ -28,11 +28,7 @@ angular.module('slides')
           }
         },
         modal: true,
-        views: {
-          'modal@': {
-            controller: 'DeckController',
-            templateUrl: 'views/slides/deck.html'
-          }
-        }
+        controller: 'DeckController',
+        templateUrl: 'views/slides/deck.html'
       });
   });
