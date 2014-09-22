@@ -21,6 +21,14 @@
       "BLOG": {
         "NAME": "Posts e Notícias",
         "SHORT_NAME": "Blog"
+      },
+      "DEV": {
+        "NAME": "Desenvolvimento",
+        "SHORT_NAME": "Dev",
+
+        "DISCLAIMER": "Este website foi construido a partir de um experimento usando <a href=\"https://ghost.org\">Ghost</a> e <a href=\"https://angularjs.org/\">AngularJS</a> em conjunto.",
+        "INTENT": "Diversas outras ferramentas de terceiros foram utilizadas para alcançar este resultado. O objetivo dessa página é listar todas essas ferramentas e prover crédito aos seus autores.",
+        "DEPENDENCIES": "Dependencias"
       }
     },
 

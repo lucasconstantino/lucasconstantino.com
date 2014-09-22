@@ -21,6 +21,14 @@
       "BLOG": {
         "NAME": "Blog Posts",
         "SHORT_NAME": "Blog"
+      },
+      "DEV": {
+        "NAME": "Development",
+        "SHORT_NAME": "Dev",
+
+        "DISCLAIMER": "This website was build out of an experiment using <a href=\"https://ghost.org\">Ghost</a> and <a href=\"https://angularjs.org/\">AngularJS</a> together.",
+        "INTENT": "Many other tools were used to accomplish this result. This page means to list exactly what dependencies were used via <a href=\"https://www.npmjs.org/\">NPM</a> and <a href=\"http://bower.io\">Bower</a>.",
+        "DEPENDENCIES": "Dependencies"
       }
     },
 

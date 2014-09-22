@@ -10,9 +10,9 @@
     <div class="section-inner">
       <h2>Ghost & AngularJS</h2>
       <p>
-        This website was build out of an experiment using <a href="https://ghost.org">Ghost</a> and <a href="https://angularjs.org/">AngularJS</a> together.
+        <span translate="SECTIONS.DEV.DISCLAIMER"></span>
         <br>
-        <small>Many other tools were used to accomplish this result. This page means to list exactly what dependencies are declared via <a href="https://www.npmjs.org/">NPM</a> and <a href="http://bower.io">Bower</a>, the package managers used to manage the project's dependencies.</small>
+        <small translate="SECTIONS.DEV.INTENT"></small>
       </p>
     </div>
   </section>
@@ -29,7 +29,8 @@
           ng-repeat="project in bower | orderBy:'name'">
           <div
             github-repo="{{project.repo}}"
-            github-repo-override="{name: project.name}"></div>
+            github-repo-override="{name: project.name}"
+            github-repo-options="{author: true}"></div>
         </article>
       </div>
     </div>
@@ -37,7 +38,7 @@
 
   <section id="node-dependencies" class="content-section">
     <div class="section-inner">
-      <h2>Node Dependencies</h2>
+      <h2>NPM Dependencies</h2>
       <div class="article-list project-list"
         masonry="{transitionDuration: 0}"
         item-selector=".project"
@@ -47,7 +48,8 @@
           ng-repeat="project in node | orderBy:'name'">
           <div
             github-repo="{{project.repo}}"
-            github-repo-override="{name: project.name}"></div>
+            github-repo-override="{name: project.name}"
+            github-repo-options="{author: true}"></div>
         </article>
       </div>
     </div>
