@@ -21,13 +21,15 @@
     <div class="section-inner">
       <h2>Bower Dependencies</h2>
       <div class="article-list project-list"
-        masonry="{transitionDuration: 0}"
+        masonry
         item-selector=".project"
         load-images="false" >
         <article class="project"
           masonry-brick
-          ng-repeat="project in bower">
-          <div github-repo="{{project.repo}}">project!</div>
+          ng-repeat="project in bower | orderBy:'name'">
+          <div
+            github-repo="{{project.repo}}"
+            github-repo-override="{name: project.name}"></div>
         </article>
       </div>
     </div>
@@ -42,8 +44,10 @@
         load-images="false" >
         <article class="project"
           masonry-brick
-          ng-repeat="project in node">
-          <div github-repo="{{project.repo}}">project!</div>
+          ng-repeat="project in node | orderBy:'name'">
+          <div
+            github-repo="{{project.repo}}"
+            github-repo-override="{name: project.name}"></div>
         </article>
       </div>
     </div>
