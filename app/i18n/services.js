@@ -19,13 +19,18 @@ angular.module('i18n')
       $translateProvider.translations(lang, translations[lang].phrases);
     });
 
-    this.$get = function ($rootScope, $cookies, $translate) {
+    this.$get = function ($rootScope, $localStorage, $translate) {
 
-      userLanguage = translations[$cookies.language] && $cookies.language || userLanguage;
+      var userLanguage = navigator.language || navigator.userLanguage;
+
+      $localStorage.i18n = $localStorage.i18n || {
+        filter: true,
+        language: !translations[userLanguage] ? 'en' : userLanguage
+      };
 
       // Prepare factory.
-      var i18n = {
-        filter: $cookies.languageFilter === 'false' ? false : true,
+      var factory = {
+        current: null,
         languages: translations
       };
 
@@ -34,37 +39,37 @@ angular.module('i18n')
        * @return {[type]} [description]
        */
       function resetLanguage() {
-        i18n.current = translations[$translate.use()] || translations.en || translations[0];
-        $rootScope.language = i18n.current;
-        $cookies.language = i18n.current.code;
+        factory.current = translations[$translate.use()] || translations.en || translations[0];
+        $rootScope.language = factory.current;
+        $localStorage.i18n.language = factory.current.code;
       }
 
       /**
        * Verify if languages as relative.
        */
-      i18n.relative = function (fromLanguage, toLanguage) {
+      factory.relative = function (fromLanguage, toLanguage) {
         return fromLanguage.replace(/[_-].*/, '') === toLanguage.replace(/[_-].*/, '');
       };
 
       /**
        * Verify if language matches a set.
        */
-      i18n.matches = function (language, languages, ease) {
+      factory.matches = function (language, languages, ease) {
         ease = ease || false;
-        languages = languages || [i18n.current.code];
+        languages = languages || [factory.current.code];
 
         return !!languages.filter(function (filterLanguage) {
-          return language === filterLanguage || (ease && i18n.relative(language, filterLanguage));
+          return language === filterLanguage || (ease && factory.relative(language, filterLanguage));
         }).length;
       };
 
-      $translate.use(userLanguage);
-      $translate.preferredLanguage(userLanguage);
+      $translate.use($localStorage.i18n.language);
+      $translate.preferredLanguage($localStorage.i18n.language);
 
       resetLanguage();
       $rootScope.$on('$translateChangeEnd', resetLanguage);
 
       // Return factory.
-      return i18n;
+      return factory;
     };
   });

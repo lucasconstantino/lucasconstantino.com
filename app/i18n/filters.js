@@ -9,9 +9,9 @@ angular.module('i18n')
   /**
    * Filter an array of objects by matching languages.
    */
-  .filter('language', function (i18n) {
+  .filter('language', function (i18n, $localStorage) {
     return function (array, languages, attr) {
-      if (!angular.isArray(array) || !i18n.filter) return array;
+      if (!angular.isArray(array) || !$localStorage.i18n.filter) return array;
 
       attr = attr || 'language';
       languages = languages || i18n.current.code;
