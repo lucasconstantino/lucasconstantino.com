@@ -63,13 +63,15 @@ angular.module('i18n')
         }).length;
       };
 
-      $translate.use($localStorage.i18n.language);
       $translate.preferredLanguage($localStorage.i18n.language);
 
-      resetLanguage();
       $rootScope.$on('$translateChangeEnd', resetLanguage);
 
       // Return factory.
       return factory;
     };
+  })
+
+  .run(function ($translate, $localStorage) {
+    $translate.use($localStorage.i18n.language);
   });
