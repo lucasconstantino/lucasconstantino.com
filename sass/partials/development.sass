@@ -1,0 +1,75 @@
+/*------------------------------------------------------------------------------
+ * Development Page
+ *------------------------------------------------------------------------------
+ */
+
+
+.project
+  width: 100%
+
+.development
+  text-align: center
+
+  // Featured sections.  
+  #ghost-and-angular
+    background-color: white
+    .section-inner
+      @extend %remarkable
+
+      p
+        @extend %transition-navigation
+
+        &:hover
+          color: rgba($color-midnight-blue, 0.5)
+          a
+            color: $color-midnight-blue
+            &:hover
+              color: $color-green-sea
+
+        small
+          @extend %readable
+          display: block
+          margin-top: e1npmm
+          font-size: 0.7em
+          line-height: 1.3em
+
+  #node-dependencies
+    background-color: white
+
+  // Projects listing.
+  .project-list
+    text-align: left
+    .project
+      @extend %col-md-4
+      @extend %col-sm-6
+      margin-bottom: 1em
+
+      .github-box
+        .github-box-content
+          white-space: auto
+          overflow: visible
+          text-overflow: auto
+          line-height: 1.5em
+          margin: 0.5em 0
+        .github-box-download
+          height: auto
+  
+  .content-section + .content-section
+    position: relative
+
+    .section-inner
+      padding-bottom: 6rem
+
+    h2
+      padding-bottom: 1em
+      border-bottom: 2px dashed rgba(0, 0, 0, 0.1)
+      margin-bottom: 1.2em
+
+    &:before
+      +chess-board(rgba(black, 0.05), transparent, 16px)
+      content: ""
+      position: absolute
+      top: -8px
+      right: 0
+      left: 0
+      height: 16px
