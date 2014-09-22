@@ -30,7 +30,7 @@ angular.module('i18n')
 
       // Prepare factory.
       var factory = {
-        current: null,
+        current: {},
         languages: translations
       };
 
@@ -64,14 +64,13 @@ angular.module('i18n')
       };
 
       $translate.preferredLanguage($localStorage.i18n.language);
-
       $rootScope.$on('$translateChangeEnd', resetLanguage);
+      $translate.use($localStorage.i18n.language);
 
       // Return factory.
       return factory;
     };
   })
 
-  .run(function ($translate, $localStorage) {
-    $translate.use($localStorage.i18n.language);
-  });
+  // Force loading of service.
+  .run(function (i18n) {});
