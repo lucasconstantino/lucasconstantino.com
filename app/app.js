@@ -54,55 +54,7 @@ angular.module(config.project.name,
         params: fromParams,
         scroll: $body.scrollTop()
       });
-
-      // Handle modals.
-      // @todo: handle child modal states.
-      if (to.views && to.modal) {
-        $timeout(function () {
-          $rootScope.modal = true;
-        });
-      } else {
-        $rootScope.modal = false;
-      }
     });
-
-    /**
-     * Closes any opened modal.
-     */
-    $rootScope.closeModal = function (e) {
-
-      var isModalContainer = e && e.target.classList.contains('modal-container')
-        , isModal = e && e.target.parentNode.classList.contains('modal-container');
-
-      if (this.modal && (isModalContainer || isModal)) {
-        $rootScope.modal = false;
-        $timeout(function () {
-          var to = $rootScope.prevStates[$rootScope.prevStates.length - 1];
-
-          if (to.state.abstract) {
-            to = $state.$current;
-
-            // Recursively try to find nearest non-abstract parent.
-            while (to.parent) {
-              if (!to.parent.self.abstract) {
-                $state.go(to.parent.self);
-              }
-
-              to = to.parent;
-            }
-
-            // Move home :(
-            $location.url('/');
-          } else {
-            $state.go(to.state, to.params);
-          }
-
-          setTimeout(function () {
-            $body.scrollTop(to.scroll || 0);
-          }, 10);
-        }, 400);
-      }
-    };
   })
 
   // Caching and loading.
