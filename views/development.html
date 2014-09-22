@@ -1,18 +1,49 @@
 
 <div class="development">
-  <header class="header-section">
+<!--   <header class="header-section">
     <div class="section-inner">
       <h1 class="page-title">Development <small>Powered by <a href="https://github.com/" target="_blank">GitHub</a></small></h1>
     </div>
-  </header>
+  </header> -->
 
-  <section class="content-section">
+  <section id="ghost-and-angular" class="content-section">
+    <div class="section-inner">
+      <h2>Ghost & AngularJS</h2>
+      <p>
+        This website was build out of an experiment using <a href="https://ghost.org">Ghost</a> and <a href="https://angularjs.org/">AngularJS</a> together.
+        <br>
+        <small>Many other tools were used to accomplish this result. This page means to list exactly what dependencies are declared via <a href="https://www.npmjs.org/">NPM</a> and <a href="http://bower.io">Bower</a>, the package managers used to manage the project's dependencies.</small>
+      </p>
+    </div>
+  </section>
+
+  <section id="bower-dependencies" class="content-section">
     <div class="section-inner">
       <h2>Bower Dependencies</h2>
-      <div class="article-list project-list">
+      <div class="article-list project-list"
+        masonry="{transitionDuration: 0}"
+        item-selector=".project"
+        load-images="false" >
         <article class="project"
+          masonry-brick
           ng-repeat="project in bower">
-          <div github-repo="">project!</div>
+          <div github-repo="{{project.repo}}">project!</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="node-dependencies" class="content-section">
+    <div class="section-inner">
+      <h2>Node Dependencies</h2>
+      <div class="article-list project-list"
+        masonry="{transitionDuration: 0}"
+        item-selector=".project"
+        load-images="false" >
+        <article class="project"
+          masonry-brick
+          ng-repeat="project in node">
+          <div github-repo="{{project.repo}}">project!</div>
         </article>
       </div>
     </div>
