@@ -28,7 +28,8 @@
 <body class="{{body_class}}"
   ng-class="{
     'open-modal': modal,
-    'home': state.name == 'home'
+    'home': state.name == 'home',
+    'ready': ready
   }">
   <header id="site-head">
     <div id="site-head-inner">
@@ -121,6 +122,13 @@
 
   <div class="modal-container" ng-click="closeModal($event)">
     <div ui-view="modal"></div>
+  </div>
+
+  <div id="main-loader">
+    <div class="chasing-dots">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
   </div>
 
   {{! Ghost scripts }}

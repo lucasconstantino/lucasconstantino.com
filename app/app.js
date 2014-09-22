@@ -103,8 +103,11 @@ angular.module(config.project.name,
         }, 400);
       }
     };
+  })
 
+  // Caching and loading.
+  .run(function ($rootScope, $timeout) {
     $timeout(function () {
       $rootScope.ready = true;
-    });
+    }, 500);
   });
