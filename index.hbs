@@ -92,7 +92,7 @@
           </a>
         </li>
         <li data-title="\{{'I18N.SETTINGS' | translate}}">
-          <a ui-sref="home.language">
+          <a ui-sref="language">
             <span>
               <i class="fa fa-language"></i>
             </span>
@@ -121,9 +121,7 @@
     </footer>
   </div>
 
-  <div class="modal-container" ng-click="closeModal($event)">
-    <div ui-view="modal"></div>
-  </div>
+  <div class="modal-container" ng-click="closeModal($event)"></div>
 
   <div id="main-loader">
     <div class="chasing-dots">
