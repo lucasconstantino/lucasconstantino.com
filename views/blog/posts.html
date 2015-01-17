@@ -10,7 +10,7 @@
     <div class="section-inner">
 
       <div class="article-list post-list">
-        <div class="article-translations"
+        <div class="article-group post-translations"
           ng-repeat="(date, grouped) in posts | groupBy: 'published_at'">
           <article class="post"
             ng-repeat="post in grouped | language">
