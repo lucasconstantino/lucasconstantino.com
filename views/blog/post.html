@@ -5,15 +5,31 @@
       <ul class="breadcrumbs">
         <li><a ui-sref="blog">Blog</a></li>
       </ul>
-      <h1 class="page-title">{{post.title}}
-        <small>
-          <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
-            {{post.date | date:'longDate'}}
-          </time>
-        </small>
-      </h1>
+      <h1 class="page-title">{{post.title}}</h1>
     </div>
   </header>
+
+  <section class="meta-section post-meta">
+    <div class="section-inner">
+      <div class="post-meta-date">
+        <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
+          {{post.date | date:'longDate'}}
+        </time>
+      </div>
+      <div class="post-meta-tags" ng-if="post.tags.length">
+        <span>Tags: </span>
+        <ul class="post-tags">
+          <li class="post-tag"
+            ng-repeat="tag in post.tags"
+            ng-class="{
+              'penult': $index == (post.tags.length - 2)
+            }">
+            <a ui-sref="blog({tag: tag.slug})">{{tag.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <section class="content-section">
     <div class="section-inner">
