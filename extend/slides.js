@@ -12,21 +12,11 @@ var https = require('https')
 
 // Configuration.
 var frequency = 86400000 // daily.
-  , host      = 'www.kimonolabs.com'
-  , apiPath   = 'api'
-  , apiId     = '6pn9lvsc'
+  , host      = 'http://slides.com'
+  , username  = 'lucasconstantinosilva'
   , decks     = []
   , user      = {}
-  , query     = {
-      apiKey: 'd10e17f0804a00aeb4ce6f8ef05083f0'
-    , kimpath1: 'lucasconstantinosilva'
-    }
-  , options   = {
-      host: host,
-      path: '/' + apiPath + '/' + apiId + '?' + Object.keys(query).map(function (key) {
-        return key.toLowerCase() + '=' + query[key];
-      }).join('&')
-    };
+  , apiUrl    = host + '/' + username;
 
 
 /**
@@ -89,15 +79,7 @@ function cleanDeck(deck) {
   deck.likes = parseInt(0 + deck.likes);
   deck.views = parseInt(0 + deck.views);
 
-  // Parse publishing data.
-  var publishedRegex = /Published ([a-zA-z]{3}) ([0-9]{1,2}).*?, ([0-9]*)$/;
-  var publishedSplit = deck.published.match(publishedRegex);
-
-  var month = publishedSplit[1];
-  var day   = publishedSplit[2];
-  var year  = publishedSplit[3];
-
-  deck.published = new Date(month + ' ' + day + ', ' + year);
+  deck.published = new Date(deck.published);
 
   findDominantColor(deck);
   findDominantLanguage(deck);
@@ -107,28 +89,56 @@ function cleanDeck(deck) {
  * Update decks data.
  */
 function update() {
-  https.request(options, function (response) {
-    var data = ''
-      , parsed;
 
-    // Listen for chunks of data.
-    response.on('data', function (chunk) {
-      data += chunk;
-    });
+  // Clear values.
+  decks = [];
+  user = {};
 
-    // Listen for response end.
-    response.on('end', function () {
-      parsed = JSON.parse(data);
-      decks  = parsed && parsed.results && parsed.results.decks || [];
-      user   = parsed && parsed.results && parsed.results.user && parsed.results.user[0] || {};
+  request(apiUrl, function (err, res, body) {
+    if (body) {
+      jsdom.env(body, function (err, window) {
+        if (window) {
+          var $ = jQuery(window)
+            , $decks = $('.decks .deck')
+            , $user = $('.user-info');
 
-      // Clean deck data.
-      decks.forEach(cleanDeck);
+          $decks.each(function () {
+            var $deck = $(this);
 
-      // Schedule next update.
-      setTimeout(update, frequency);
-    });
-  }).end();
+            decks.push({
+              title: $deck.find('.deck-title .deck-title-value').text().trim()
+            , published: $deck.find('.deck-metadata .status time').attr('datetime')
+            , views: $deck.find('.deck-metadata .views').text().trim()
+            , likes: parseInt($deck.find('.deck-metadata .kudos').text().trim())
+            , image: $deck.find('.deck-image').css('background-image')
+              .replace('url(', '')
+              .replace(')', '')
+              .trim()
+            , url: host + $deck.attr('data-url')
+            , id: $deck.attr('data-id')
+            , slug: $deck.attr('data-slug')
+            , visibility: $deck.is('.public')
+            });
+          });
+
+          user = {
+            name: $user.find('.username').text().trim()
+          , badge: $user.find('.picture').css('background-image')
+            .replace('url(', '')
+            .replace(')', '')
+            .trim()
+          , url: host + $user.find('.username').attr('href')
+          };
+
+          // Clean deck data.
+          decks.forEach(cleanDeck);
+
+          // Schedule next update.
+          setTimeout(update, frequency);
+        }
+      });
+    }
+  });
 }
 
 // First time request.
