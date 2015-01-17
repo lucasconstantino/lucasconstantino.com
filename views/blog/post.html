@@ -5,7 +5,13 @@
       <ul class="breadcrumbs">
         <li><a ui-sref="blog">Blog</a></li>
       </ul>
-      <h1 class="page-title">{{post.title}}</h1>
+      <h1 class="page-title">{{post.title}}
+        <small>
+          <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
+            {{post.date | date:'longDate'}}
+          </time>
+        </small>
+      </h1>
     </div>
   </header>
 
@@ -13,16 +19,14 @@
     <div class="section-inner">
       <article class="post">
         <div class="post-body" post-html></div>
-
-        <footer>
-          <span class="post-meta">
-            <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
-              <span class="date-day">{{post.date | date:"d"}}</span>
-              <span class="date-month">{{post.date | date:"MMM"}}</span>
-            </time>
-          </span>
-        </footer>
       </article>
+    </div>
+  </section>
+
+  <section class="comment-section content-section">
+    <div class="section-inner">
+      <h2 translate="MISC.COMMENTS"></h2>
+      <div id="disqus_thread" disqus="'blog/' + post.slug"></div>
     </div>
   </section>
 </div>
