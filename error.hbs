@@ -23,7 +23,7 @@
     <script>
       var code = '{{code}}';
       if (code == 404) {
-        window.location = window.location.origin + '/#' + window.location.pathname.replace(/\/$/, '');
+        window.location = window.location.origin + '/#' + window.location.pathname.replace(/\/$/, '') + window.location.search;
       }
     </script>
     <main role="main" id="main">
