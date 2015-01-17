@@ -32,6 +32,17 @@
       }
     },
 
-    "POWERED_BY": "Powered by"
+    "POWERED_BY": "Powered by",
+
+    "MISC": {
+      "COMMENTS": "Comments",
+      "SUBSCRIBE": "Subscribe",
+      "COPYRIGHT": "Almost no rights reserved",
+      "TOOLS": {
+        "PUBLISHED_WITH": "Proudly published with",
+        "BUNCH": "and a bunch of",
+        "OTHER_TOOLS": "other tools"
+      }
+    }
   }
 }

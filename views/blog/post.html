@@ -9,20 +9,40 @@
     </div>
   </header>
 
+  <section class="meta-section post-meta">
+    <div class="section-inner">
+      <div class="post-meta-date">
+        <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
+          {{post.date | date:'longDate'}}
+        </time>
+      </div>
+      <div class="post-meta-tags" ng-if="post.tags.length">
+        <span>Tags: </span>
+        <ul class="post-tags">
+          <li class="post-tag"
+            ng-repeat="tag in post.tags"
+            ng-class="{
+              'penult': $index == (post.tags.length - 2)
+            }">
+            <a ui-sref="blog({tag: tag.slug})">{{tag.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="content-section">
     <div class="section-inner">
       <article class="post">
         <div class="post-body" post-html></div>
-
-        <footer>
-          <span class="post-meta">
-            <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
-              <span class="date-day">{{post.date | date:"d"}}</span>
-              <span class="date-month">{{post.date | date:"MMM"}}</span>
-            </time>
-          </span>
-        </footer>
       </article>
+    </div>
+  </section>
+
+  <section class="comment-section content-section">
+    <div class="section-inner">
+      <h2 translate="MISC.COMMENTS"></h2>
+      <div id="disqus_thread" disqus="'blog/' + post.slug"></div>
     </div>
   </section>
 </div>

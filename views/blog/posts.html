@@ -2,7 +2,7 @@
 <div class="blog blog-posts">
   <header class="header-section">
     <div class="section-inner">
-      <h1 class="page-title">Blog Posts <small>Powered by <a href="http://ghost.org/" target="_blank">Ghost</a></small></h1>
+      <h1 class="page-title">{{'SECTIONS.BLOG.NAME' | translate}} <small>{{'POWERED_BY' | translate}} <a href="http://ghost.org/" target="_blank">Ghost</a></small></h1>
     </div>
   </header>
 
@@ -11,17 +11,19 @@
 
       <div class="article-list post-list">
         <div class="article-group post-translations"
-          ng-repeat="(date, grouped) in posts | groupBy: 'published_at'">
+          ng-repeat="(date, grouped) in posts | hasTag:tag | groupBy: 'published_at'">
           <article class="post"
             ng-repeat="post in grouped | language">
             <a ui-sref="blog.post({slug: '{{post.slug}}'})">
               <header>
                 <h2>{{post.title}}</h2>
-                <div class="post-meta-date">
-                  <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
-                    <span class="date-day">{{post.date | date:"d"}}</span>
-                    <span class="date-month">{{post.date | date:"MMM"}}</span>
-                  </time>
+                <div class="post-meta">
+                  <div class="post-meta-date">
+                    <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
+                      <span class="date-day">{{post.date | date:"d"}}</span>
+                      <span class="date-month">{{post.date | date:"MMM"}}</span>
+                    </time>
+                  </div>
                 </div>
               </header>
 
