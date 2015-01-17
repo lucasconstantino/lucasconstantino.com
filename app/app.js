@@ -18,6 +18,7 @@ angular.module(config.project.name,
   , 'duScroll'
   , 'konami'
   , 'ngDisqus'
+  , 'angular.filter'
 
   // Sub-modules
   , 'i18n'
@@ -107,6 +108,10 @@ angular.module(config.project.name,
 
   // Caching and loading.
   .run(function ($rootScope, $timeout) {
+
+    // Force webkit redraw.
+    document.body.style.webkitTransform = 'scale(1)';
+    
     $timeout(function () {
       $rootScope.ready = true;
     }, 500);
