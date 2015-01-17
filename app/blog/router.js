@@ -12,7 +12,7 @@ angular.module('blog')
 
       // Blog main route.
       .state('blog', {
-        url: '/blog',
+        url: '/blog?tag',
         controller: 'BlogPostsController',
         templateUrl: 'views/blog/posts.html'
       })

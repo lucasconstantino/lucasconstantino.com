@@ -22,4 +22,24 @@ angular.module('blog')
 
       return $('<div />').append(featured.length ? featured : firstText).html() || '';
     }
+  })
+
+  // Filter posts by tag
+  .filter('hasTag', function () {
+    return function (input, tag) {
+
+      // Early return if not tag given.
+      if (!tag) return input;
+      
+      // Handle boolean request for single post.
+      if (!angular.isArray(input)) return (input.tags || []).filter(function (tagObject) {
+        return tagObject && tagObject.slug && tagObject.slug == tag;
+      }).length > 0;
+
+      return (angular.isArray(input) ? input : []).filter(function (post) {
+        return (post.tags || []).filter(function (tagObject) {
+          return tagObject && tagObject.slug && tagObject.slug == tag;
+        }).length > 0;
+      });
+    }
   });

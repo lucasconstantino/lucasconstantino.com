@@ -7,8 +7,9 @@
 angular.module('blog')
   
   // Blog list.
-  .controller('BlogPostsController', function ($scope, blogPosts) {
+  .controller('BlogPostsController', function ($scope, $stateParams, blogPosts) {
     $scope.posts = blogPosts;
+    $scope.tag = $stateParams.tag;
   })
   
   // Blog post.
