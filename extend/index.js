@@ -3,17 +3,18 @@
  * Custom Ghost Extension.
  */
 
-var rootPath  = '../../../../'
-  , config    = require(rootPath + 'core/server/config')
-  , hbs       = require('express-hbs')
-  , path      = require('path')
-  , fs        = require('fs')
-  , _         = require('lodash')
-  , walk      = require('walk')
-  , package   = require('../package.json')
-  , themePath = path.normalize(__dirname + '/../')
-  , slides    = require('./slides')
-  , i18n      = require('./i18n')
+var rootPath         = '../../../../'
+  , config           = require(rootPath + 'core/server/config')
+  , hbs              = require('express-hbs')
+  , path             = require('path')
+  , fs               = require('fs')
+  , _                = require('lodash')
+  , walk             = require('walk')
+  , package          = require('../package.json')
+  , themePath        = path.normalize(__dirname + '/../')
+  , slides           = require('./slides')
+  , i18n             = require('./i18n')
+  , postLanguage     = require('./post-language')
   , dependencyLoader = require('./dependencies.js');
 
 var dependencies = {
@@ -68,6 +69,9 @@ hbs.registerHelper('config', function (context) {
   if (context && context.data && context.data.blog) {
     config.blog = context.data.blog;
   }
+
+  // Guess and set post language.
+  (config.posts || []).forEach(postLanguage);
 
   // Join other information.
   _.assign(config, {

@@ -23,20 +23,23 @@
         </h2>
 
         <div class="article-list post-list">
-          <article class="post"
-            ng-repeat="post in posts | language | limitTo:6">
-            <a ui-sref="blog.post({slug: '{{post.slug}}'})">
-              <header>
-                <h4>{{post.title}}</h4>
-                <div class="post-meta-date">
-                  <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
-                    <span class="date-day">{{post.date | date:"d"}}</span>
-                    <span class="date-month">{{post.date | date:"MMM"}}</span>
-                  </time>
-                </div>
-              </header>
-            </a>
-          </article>
+          <div class="article-group post-translations"
+            ng-repeat="(date, grouped) in posts | limitTo:6 | groupBy: 'published_at'">
+            <article class="post"
+              ng-repeat="post in grouped | language">
+              <a ui-sref="blog.post({slug: '{{post.slug}}'})">
+                <header>
+                  <h4>{{post.title}}</h4>
+                  <div class="post-meta-date">
+                    <time datetime="{{post.date | date:'yyyy-MM-dd'}}">
+                      <span class="date-day">{{post.date | date:"d"}}</span>
+                      <span class="date-month">{{post.date | date:"MMM"}}</span>
+                    </time>
+                  </div>
+                </header>
+              </a>
+            </article>
+          </div>
         </div>
         <p class="only-language-results">
           <a
