@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <title>{{meta_title}}</title>
 
+  <base href="/">
+
   <meta name="description" content="{{meta_description}}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -162,6 +164,7 @@
   {{component "angular-masonry/angular-masonry.js"}}
   {{component "angular-translate/angular-translate.js"}}
   {{component "angular-ui-router/release/angular-ui-router.js"}}
+  {{component "angular-filter/dist/angular-filter.min.js"}}
   {{component "angular-github-repo/angular-github-repo.js"}}
 
 
@@ -188,9 +191,10 @@
   {{app "development/controllers.js"}}
   {{app "development/router.js"}}
 
-
+  
   {{! Application }}
   {{app "app.js"}}
+  {{app "modal.js"}}
   {{app "filters.js"}}
   {{app "directives.js"}}
   {{app "config.js"}}
