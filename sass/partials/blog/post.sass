@@ -5,35 +5,35 @@
 
 .blog-post
   .header-section
-    + .post-meta
-      font-size: 0.8em
-      line-height: 3em
-
-      .section-inner
-        @extend %container
-        @extend %readable
-
-      .post-meta-date
-        float: right
-
-      .post-meta-tags
-        .post-tags
-          display: inline
-
-        .post-tag
-          display: inline
-
-          &:after
-            content: ", "
-
-          &:last-child:after
-            display: none
-
-          &.penult:after
-            content: "&"
 
     .section-inner
       @extend %readable
+
+  .dividing-section
+    font-size: 0.8em
+    line-height: 3em
+
+    .section-inner
+      @extend %readable
+
+    .post-meta-date
+      float: right
+
+    .post-meta-tags
+      .post-tags
+        display: inline
+
+      .post-tag
+        display: inline
+
+        &:after
+          content: ", "
+
+        &:last-child:after
+          display: none
+
+        &.penult:after
+          content: "&"
 
   .content-section
     background-color: white
