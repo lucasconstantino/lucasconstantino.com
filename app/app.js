@@ -66,5 +66,6 @@ angular.module(config.project.name,
     
     $timeout(function () {
       $rootScope.ready = true;
+      document.body.style.webkitTransform = null;
     }, 500);
   });
