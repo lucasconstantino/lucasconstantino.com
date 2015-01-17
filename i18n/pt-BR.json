@@ -32,6 +32,16 @@
       }
     },
 
-    "POWERED_BY": "Feito usando"
+    "POWERED_BY": "Feito usando",
+
+    "MISC": {
+      "SUBSCRIBE": "Assinar",
+      "COPYRIGHT": "Quase nenhum direito reservado",
+      "TOOLS": {
+        "PUBLISHED_WITH": "Orgulhosamente publicado com",
+        "BUNCH": "e um bocado de",
+        "OTHER_TOOLS": "outras ferramentas"
+      }
+    }
   }
 }
