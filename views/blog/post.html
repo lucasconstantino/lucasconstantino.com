@@ -31,6 +31,13 @@
     </div>
   </section>
 
+  <section class="message-section message-success" ng-show="translation">
+    <div class="section-inner">
+      <a ui-sref="blog.post({slug: translation.slug})"
+        translate="I18N.OWN_LANGUAGE_SUGGESTION"></a>
+    </div>
+  </section>
+
   <section class="content-section">
     <div class="section-inner">
       <article class="post">
