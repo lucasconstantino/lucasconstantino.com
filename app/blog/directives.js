@@ -11,8 +11,9 @@ angular.module('blog')
       replace: true,
       link: function (scope, element, attrs) {
         scope.$watch('post.html', function (html) {
-          element.html(html);
-          $compile(element.contents())(scope);
+          var wrapper = angular.element('<div />').html(html);
+          element.append(wrapper);
+          $compile(wrapper)(scope);
         });
       }
     }

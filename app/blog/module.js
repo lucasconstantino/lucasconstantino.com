@@ -12,4 +12,5 @@ angular.module('blog',
   [ 'ngRoute'
   , 'ui.router'
   , 'ngSanitize'
+  , 'ng-prism'
   ]);
