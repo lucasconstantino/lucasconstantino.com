@@ -13,9 +13,9 @@
 
       <div class="article-list post-list">
         <div class="article-group post-translations"
-          ng-repeat="(date, grouped) in posts | hasTag:tag | groupBy: 'published_at'">
+          ng-repeat="(date, grouped) in posts | hasTag:tag | orderBy:published_at | groupBy: 'published_at'">
           <article class="post"
-            ng-repeat="post in grouped | language">
+            ng-repeat="post in grouped | language | languageFirst">
             <a ui-sref="blog.post({slug: '{{post.slug}}'})">
               <header>
                 <h2>{{post.title}}</h2>

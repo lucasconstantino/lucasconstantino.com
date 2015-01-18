@@ -23,4 +23,14 @@ angular.module('i18n')
         return !obj[attr] || i18n.matches(obj[attr], languages, true);
       });
     };
+  })
+
+  // Order an array of objects based on their language.
+  .filter('languageFirst', function (i18n) {
+    return function (array, attr) {
+      attr = attr || 'language';
+      return array.sort(function (item) {
+        return i18n.matches(item[attr], null, true) ? -1 : 1;
+      });
+    };
   });
