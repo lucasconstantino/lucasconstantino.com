@@ -5,7 +5,8 @@
     "I18N": {
       "SETTINGS": "Opções de Idioma",
       "SHOW_ALL": "Exibir conteúdo em todas as linguas",
-      "FILTERED_TEXT": "Exibindo apenas resultados em {{language}}"
+      "FILTERED_TEXT": "Exibindo apenas resultados em {{language}}",
+      "OWN_LANGUAGE_SUGGESTION": "Visualizar este conteúdo em português"
     },
 
     "HOME": {
