@@ -11,7 +11,7 @@
 
   .dividing-section
     font-size: 0.8em
-    line-height: 3em
+    padding: 10px 15px
 
     .section-inner
       @extend %readable
@@ -35,9 +35,11 @@
         &.penult:after
           content: "&"
 
+  .message-section .section-inner
+    @extend %readable
+
   .content-section
     background-color: white
 
   .post
     @extend %readable
-    margin-bottom: 80px
