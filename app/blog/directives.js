@@ -13,6 +13,7 @@ angular.module('blog')
         scope.$watch('post.html', function (html) {
           var wrapper = angular.element('<div />').html(html);
           element.append(wrapper);
+          element.find('img').parent('p').addClass('has-image');
           $compile(wrapper)(scope);
         });
       }
