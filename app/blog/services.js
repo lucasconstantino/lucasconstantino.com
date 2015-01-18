@@ -7,7 +7,9 @@
 angular.module('blog')
   
   .factory('blogPosts', function (AppConfig) {
-    return (AppConfig.posts || []).map(function (post) {
+
+    // Basic array.
+    var blogPosts = (AppConfig.posts || []).map(function (post) {
 
       // Transform date string into Date objects.
       post.date = new Date(post['published_at']);
@@ -18,4 +20,15 @@ angular.module('blog')
       // Map post itself.
       return post;
     });
+
+    /**
+     * Retrieves a post by it's id or null if not found.
+     */
+    blogPosts.findById = function (id) {
+      return this.filter(function (post) {
+        return post.id == id;
+      })[0] || null;
+    };
+
+    return blogPosts;
   });
